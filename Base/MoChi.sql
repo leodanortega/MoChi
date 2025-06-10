@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
-  `idCliente` int NOT NULL,
+  `idCliente` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) DEFAULT NULL,
   `Direccion` varchar(200) DEFAULT NULL,
   `RFC` varchar(15) DEFAULT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `cliente` (
   `Email` varchar(100) DEFAULT NULL,
   `Requiere_Factura` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María López','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(5,'Roberto Gómez','Calle Insurgentes 555, CDMX','ROGO810507JKL','5556789012','roberto.gomez@email.com',1),(6,'Carlos Martínez','Calle 123','123','123','1223',1);
+INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María López','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(6,'Carlos Martín','Calle 123','123','123','1223',1),(7,'Leo','Mi casa','17892371','102831902','jmaslkdja',1);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,6 @@ CREATE TABLE `promocion` (
   PRIMARY KEY (`idPromocion`),
   KEY `Cliente_idCliente` (`Cliente_idCliente`),
   KEY `Producto_idProducto` (`Producto_idProducto`),
-  CONSTRAINT `promocion_ibfk_1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`),
   CONSTRAINT `promocion_ibfk_2` FOREIGN KEY (`Producto_idProducto`) REFERENCES `producto` (`idProducto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -277,7 +276,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Distribuidora Bebidas MX','DBMX990101AAA','Calle Central 100','5551112222','ventas@bebidasmx.com'),(2,'Surtidora Refrescos S.A.','SRS950505BBB','Av. Comercial 200','5553334444','contacto@srs.com'),(3,'Distribuidora Bebidas MX','DBMX990101AAA','Calle Central 100, CDMX','5551112222','ventas@bebidasmx.com'),(4,'Surtidora Refrescos S.A.','SRS950505BBB','Av. Comercial 200, Monterrey','5553334444','contacto@srs.com'),(5,'Bebidas y Más','BYM880808CCC','Blvd. Central 150, Guadalajara','5554445555','info@bebidasyms.com'),(6,'Suministros Refrescos','SUMR920303DDD','Av. Las Americas 50, León','5556667777','ventas@suministrosrefrescos.com'),(7,'Distribuciones del Norte','DDN900101EEE','Calle Norte 30, Monterrey','5558889999','contacto@distribnorte.com'),(8,'Refrescos del Bajío','RDB850707FFF','Av. Bajío 400, León','5557776666','ventas@refrescosbajio.com'),(9,'Surtidora Tropical','SUTR930909GGG','Calle Tropical 123, Cancún','5552223333','ventas@surtidoratropical.com'),(10,'Bebidas Selectas','BESX900101HHH','Av. Selecta 60, Puebla','5559990000','contacto@bebidasselectas.com'),(11,'Proveedores Unidos','PRUN920202III','Calle Unión 75, Guadalajara','5554441111','info@proveedoresunidos.com'),(12,'Importadora de Refrescos','IMDR951010JJJ','Av. Importación 80, CDMX','5551234567','ventas@importadora.com'),(13,'Leonardo','09187230971208','ashdk','12313','12313');
+INSERT INTO `proveedor` VALUES (1,'Distribuidora Bebidas MX','DBMX990101AAA','Calle Central 100','5551112222','ventas@bebidasmx.com'),(2,'Surtidora Refrescos S.A.','SRS950505BBB','Av. Comercial 200','5553334444','contacto@srs.com'),(4,'Surtidora Refrescos S.A.','SRS950505BBB','Av. Comercial 200, Monterrey','5553334444','contacto@srs.com'),(5,'Bebidas y Más','BYM880808CCC','Blvd. Central 150, Guadalajara','5554445555','info@bebidasyms.com'),(6,'Suministros Refrescos','SUMR920303DDD','Av. Las Americas 50, León','5556667777','ventas@suministrosrefrescos.com'),(7,'Distribuciones del Norte','DDN900101EEE','Calle Norte 30, Monterrey','5558889999','contacto@distribnorte.com'),(8,'Refrescos del Bajío','RDB850707FFF','Av. Bajío 400, León','5557776666','ventas@refrescosbajio.com'),(9,'Surtidora Tropical','SUTR930909GGG','Calle Tropical 123, Cancún','5552223333','ventas@surtidoratropical.com'),(10,'Bebidas Selectas','BESX900101HHH','Av. Selecta 60, Puebla','5559990000','contacto@bebidasselectas.com'),(11,'Proveedores Unidos','PRUN920202III','Calle Unión 75, Guadalajara','5554441111','info@proveedoresunidos.com'),(12,'Importadora de Refrescos','IMDR951010JJJ','Av. Importación 80, CDMX','5551234567','ventas@importadora.com'),(13,'Leonardo','09187230971208','ashdk','12313','12313');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,4 +543,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-09 19:49:12
+-- Dump completed on 2025-06-10 14:21:11
