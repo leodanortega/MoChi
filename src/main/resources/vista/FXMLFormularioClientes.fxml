@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="320.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLFormularioClientesController">
+    <children>
+
+        <Label layoutX="20" layoutY="20" text="Nombre:" />
+        <TextField fx:id="tfNombre" layoutX="150" layoutY="16" prefWidth="220" promptText="Nombre del cliente" />
+
+        <Label layoutX="20" layoutY="60" text="RFC:" />
+        <TextField fx:id="tfRFC" layoutX="150" layoutY="56" prefWidth="220" promptText="RFC" />
+
+        <Label layoutX="20" layoutY="100" text="Dirección:" />
+        <TextField fx:id="tfDireccion" layoutX="150" layoutY="96" prefWidth="220" promptText="Dirección" />
+
+        <Label layoutX="20" layoutY="140" text="Teléfono:" />
+        <TextField fx:id="tfTelefono" layoutX="150" layoutY="136" prefWidth="220" promptText="Teléfono" />
+
+        <Label layoutX="20" layoutY="180" text="Email:" />
+        <TextField fx:id="tfEmail" layoutX="150" layoutY="176" prefWidth="220" promptText="Correo electrónico" />
+
+        <Label layoutX="20" layoutY="220" text="Factura:" />
+        <CheckBox fx:id="cbFactura" layoutX="150" layoutY="216" />
+
+        <Button fx:id="btnGuardar" layoutX="150" layoutY="260" onAction="#guardarCliente" prefWidth="100" text="Guardar" />
+    </children>
+</AnchorPane>
