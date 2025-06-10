@@ -53,7 +53,7 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
 
     @FXML
     private void btnGestionClientes(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLTablaClientes.fxml", "Gestión de Clientes");
+        abrirNuevaVentana("/vista/FXMLGestionClientes.fxml", "Gestión de Clientes");
     }
 
     @FXML
