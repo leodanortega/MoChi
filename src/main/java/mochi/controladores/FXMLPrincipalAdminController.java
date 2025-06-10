@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import mochi.modelo.pojo.Usuario;
 
-public class FXMLPrincipalEmpleadoController implements Initializable {
+public class FXMLPrincipalAdminController implements Initializable {
 
     private Usuario usuario;
 
@@ -23,7 +23,7 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Nada por hacer aquí por ahora
+        // Nada que hacer por ahora
     }
 
     public void setUsuario(Usuario usuario) {
@@ -43,7 +43,7 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Cierra la ventana actual
+            // Cerrar la ventana actual
             Stage actual = (Stage) lblNombreUsuario.getScene().getWindow();
             actual.close();
         } catch (IOException e) {
@@ -52,18 +52,33 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
     }
 
     @FXML
-    private void btnGestionClientes(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLTablaClientes.fxml", "Gestión de Clientes");
+    private void btnGestionProveedores(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLCatalogoProveedores.fxml", "Gestión de Proveedores");
     }
 
     @FXML
-    private void btnRealizarVentas(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLHacerVenta.fxml", "Realizar Venta");
+    private void btnGestionPedidos(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLCatalogoPedidos.fxml", "Gestión de Pedidos");
     }
 
     @FXML
-    private void btnConsultaProductos(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLConsultaProductos.fxml", "Consulta de Productos y Promociones");
+    private void btnGestionPromociones(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLCatalogoPromociones.fxml", "Gestión de Promociones");
+    }
+
+    @FXML
+    private void btnRegistroCompras(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLRegistroCompras.fxml", "Registro de Compras");
+    }
+
+    @FXML
+    private void btnGestionPersonal(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLCatalogoUsuarios.fxml", "Gestión de Personal");
+    }
+
+    @FXML
+    private void btnVerReportes(ActionEvent event) {
+        abrirNuevaVentana("/mochi/vista/FXMLReportes.fxml", "Visualización de Reportes");
     }
 
     private void abrirNuevaVentana(String rutaFXML, String titulo) {
@@ -71,11 +86,10 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
             Parent root = loader.load();
 
-            // Si necesitas pasar el usuario al nuevo controlador:
-            // Object controller = loader.getController();
-            // if (controller instanceof FXMLTablaClientesController) {
-            //     ((FXMLTablaClientesController) controller).setUsuario(usuario);
-            // }
+            // Si deseas pasar el usuario a la nueva vista, puedes hacerlo aquí:
+            // Ejemplo:
+            // FXMLCatalogoProveedoresController controller = loader.getController();
+            // controller.setUsuario(usuario);
 
             Stage stage = new Stage();
             stage.setTitle(titulo);

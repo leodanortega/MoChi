@@ -111,7 +111,7 @@ public class FXMLIniciarSesionController implements Initializable {
 
             // Determina qué vista cargar según el tipo de usuario
             if (usuarioSesion.getTipo() == 1) { // Administrador
-                cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPrincipal.fxml"));
+                cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPrincipalAdmin.fxml"));
             } else if (usuarioSesion.getTipo() == 2) { // Empleado
                 cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPrincipalEmpleado.fxml"));
             } else {
@@ -123,8 +123,8 @@ public class FXMLIniciarSesionController implements Initializable {
 
             // Asigna el usuario al controlador correspondiente
             Object controlador = cargador.getController();
-            if (controlador instanceof FXMLPrincipalController) {
-                ((FXMLPrincipalController) controlador).setUsuario(usuarioSesion);
+            if (controlador instanceof FXMLPrincipalAdminController) {
+                ((FXMLPrincipalAdminController) controlador).setUsuario(usuarioSesion);
             } else if (controlador instanceof FXMLPrincipalEmpleadoController) {
                 ((FXMLPrincipalEmpleadoController) controlador).setUsuario(usuarioSesion);
             }
