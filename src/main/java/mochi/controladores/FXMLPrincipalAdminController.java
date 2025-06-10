@@ -53,7 +53,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnGestionProveedores(ActionEvent event) {
-        abrirNuevaVentana("/mochi/vista/FXMLCatalogoProveedores.fxml", "Gestión de Proveedores");
+        abrirNuevaVentana("/vista/FXMLGestionProveedores.fxml", "Gestión de Proveedores");
     }
 
     @FXML
