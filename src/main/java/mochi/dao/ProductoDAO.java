@@ -165,7 +165,8 @@ public class ProductoDAO {
     public List<Producto> listarProductosConDetalleCompra() {
         List<Producto> lista = new ArrayList<>();
         String sql = "SELECT DISTINCT p.* FROM producto p " +
-                "INNER JOIN detalle_compra dc ON p.idProducto = dc.Producto_idProducto";
+                "INNER JOIN detalle_compra dc ON p.idProducto = dc.Producto_idProducto " +
+                "WHERE p.Cantidad_Minima > p.Cantidad_Actual";
 
         try (Connection con = Conexion.getConexion().getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -187,6 +188,48 @@ public class ProductoDAO {
         }
 
         return lista;
+    }
+
+    public boolean actualizarStockYLimpiarPedidos(Producto producto, PedidoDAO pedidoDAO) {
+        Connection con = null;
+        try {
+            con = Conexion.getConexion().getConnection();
+            con.setAutoCommit(false);
+
+            // Actualiza la cantidad actual del producto
+            String sqlActualizarStock = "UPDATE producto SET Cantidad_Actual = ? WHERE idProducto = ?";
+            try (PreparedStatement ps = con.prepareStatement(sqlActualizarStock)) {
+                ps.setInt(1, producto.getCantidadActual());
+                ps.setInt(2, producto.getIdProducto());
+                ps.executeUpdate();
+            }
+
+            // Limpia pedidos donde el stock ya superó la cantidad mínima
+            // (se implementa en PedidoDAO, recibe la conexión para usar la misma transacción)
+            pedidoDAO.limpiarPedidosConStockSuficiente(producto.getIdProducto(), con);
+
+            con.commit();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            if (con != null) {
+                try {
+                    con.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            return false;
+        } finally {
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
 
