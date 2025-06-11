@@ -80,7 +80,7 @@ public class FXMLGestionPromocionesController {
             int cols = md.getColumnCount();
 
 
-            for (int i = 1; i <= cols; i++) {
+            for (int i = 2; i <= cols; i++) {
                 final int colIndex = i - 1;
                 TableColumn<ObservableList<String>, String> col = new TableColumn<>(md.getColumnLabel(i));
                 col.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(colIndex)));
@@ -150,7 +150,7 @@ public class FXMLGestionPromocionesController {
         // 3) Confirmación
         Alert confirm = new Alert(
                 Alert.AlertType.CONFIRMATION,
-                "¿Eliminar promoción con ID " + idPromocion + "?",
+                "¿Eliminar promoción?",
                 ButtonType.YES, ButtonType.NO
         );
         confirm.setHeaderText(null);
@@ -173,11 +173,15 @@ public class FXMLGestionPromocionesController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error al eliminar promoción:\n" + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Error al eliminar promoción");
         }
     }
 
-    private void showAlert(Alert.AlertType alertType, String selecciona_primero_una_promoción_para_eli) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private void showAlert(Alert.AlertType alertType, String mensaje) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
