@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `mydb`;
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
@@ -84,14 +86,14 @@ DROP TABLE IF EXISTS `compras`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `compras` (
-  `idCompras` int NOT NULL,
+  `idCompras` int NOT NULL AUTO_INCREMENT,
   `Proveedor_idProveedor` int DEFAULT NULL,
   `Total` decimal(10,2) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   PRIMARY KEY (`idCompras`),
   KEY `Proveedor_idProveedor` (`Proveedor_idProveedor`),
   CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`Proveedor_idProveedor`) REFERENCES `proveedor` (`idProveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +102,7 @@ CREATE TABLE `compras` (
 
 LOCK TABLES `compras` WRITE;
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
-INSERT INTO `compras` VALUES (1,1,2500.00,'2025-05-20'),(2,2,1500.00,'2025-05-19');
+INSERT INTO `compras` VALUES (6,1,480.00,'2025-06-10'),(7,4,144.00,'2025-06-10'),(8,5,240.00,'2025-06-10');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,8 +120,7 @@ CREATE TABLE `detalle_compra` (
   `Precio_Compra` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`Compras_idCompras`,`Producto_idProducto`),
   KEY `Producto_idProducto` (`Producto_idProducto`),
-  CONSTRAINT `detalle_compra_ibfk_1` FOREIGN KEY (`Compras_idCompras`) REFERENCES `compras` (`idCompras`),
-  CONSTRAINT `detalle_compra_ibfk_2` FOREIGN KEY (`Producto_idProducto`) REFERENCES `producto` (`idProducto`)
+  CONSTRAINT `fk_detalle_compra_compras` FOREIGN KEY (`Compras_idCompras`) REFERENCES `compras` (`idCompras`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -129,7 +130,7 @@ CREATE TABLE `detalle_compra` (
 
 LOCK TABLES `detalle_compra` WRITE;
 /*!40000 ALTER TABLE `detalle_compra` DISABLE KEYS */;
-INSERT INTO `detalle_compra` VALUES (1,1,100,12.00),(1,3,50,12.00),(2,2,75,15.00),(2,4,100,10.00);
+INSERT INTO `detalle_compra` VALUES (6,6,12,20.00),(7,5,12,12.00),(8,6,12,20.00);
 /*!40000 ALTER TABLE `detalle_compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +209,7 @@ CREATE TABLE `producto` (
   `Cantidad_Actual` int DEFAULT NULL,
   `Cantidad_Minima` int DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +218,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',13.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70),(5,'Fanta de fresa','600',20.00,30,50);
+INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',13.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70),(5,'Fanta de fresa','600',20.00,30,50),(6,'Prueba','200',30.00,20,30);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +240,7 @@ CREATE TABLE `promocion` (
   KEY `Cliente_idCliente` (`Cliente_idCliente`),
   KEY `Producto_idProducto` (`Producto_idProducto`),
   CONSTRAINT `promocion_ibfk_2` FOREIGN KEY (`Producto_idProducto`) REFERENCES `producto` (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,4 +544,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-10 20:16:49
+-- Dump completed on 2025-06-10 22:38:51
