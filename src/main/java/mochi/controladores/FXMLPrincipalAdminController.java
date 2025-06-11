@@ -81,6 +81,11 @@ public class FXMLPrincipalAdminController implements Initializable {
         abrirNuevaVentana("/mochi/vista/FXMLReportes.fxml", "Visualización de Reportes");
     }
 
+    @FXML
+    private void btnGestionProductos(ActionEvent event) {
+        abrirNuevaVentana("mochi/vista/FXMLGestionProductos.fxml", "Gestión de Productos");
+    }
+
     private void abrirNuevaVentana(String rutaFXML, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
