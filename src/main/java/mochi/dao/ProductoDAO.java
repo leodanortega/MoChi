@@ -138,7 +138,7 @@ public class ProductoDAO {
 
     public List<Producto> listarProductosFaltantes() {
         List<Producto> lista = new ArrayList<>();
-        String sql = "SELECT * FROM producto WHERE Cantidad_Actual < Cantidad_Minima";
+        String sql = "SELECT * FROM producto p WHERE p.Cantidad_Actual < p.Cantidad_Minima AND p.idProducto NOT IN ( SELECT idProducto FROM detalle_compra)";
 
         try (Connection con = Conexion.getConexion().getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
