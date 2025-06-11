@@ -86,5 +86,16 @@ public class Usuario {
         return String.format("%S %S %S", nombre, apellidoPaterno, apellidoMaterno);
     }
 
-
+    public String getTipoString() {
+        switch (tipo) {
+            case 1:
+                return "Administrador";
+            case 2:
+                return "Empleado";
+            case 3:
+                return "Invitado";
+            default:
+                return "Desconocido";
+        }
+    }
 }

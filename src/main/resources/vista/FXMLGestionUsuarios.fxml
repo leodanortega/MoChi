@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mochi.controladores.FXMLGestionUsuariosController"
+            prefWidth="700" prefHeight="500">
+
+    <!-- Título -->
+    <Label text="Lista de Usuarios" style="-fx-font-size: 20px;" layoutX="10" layoutY="10" />
+
+    <!-- Botón Regresar -->
+    <Button text="Regresar" layoutX="600" layoutY="10" onAction="#regresarVentana" />
+
+    <!-- Campo de búsqueda -->
+    <TextField fx:id="txtBuscar" promptText="Buscar usuario por nombre" layoutX="10" layoutY="45" prefWidth="680" />
+
+    <!-- Tabla de Usuarios -->
+    <TableView fx:id="tablaUsuarios" layoutX="10" layoutY="80" prefWidth="680" prefHeight="350">
+        <columns>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="140" />
+            <TableColumn fx:id="colApellidoPaterno" text="Apellido Paterno" prefWidth="120" />
+            <TableColumn fx:id="colApellidoMaterno" text="Apellido Materno" prefWidth="120" />
+            <TableColumn fx:id="colUsername" text="Username" prefWidth="120" />
+            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="80" />
+        </columns>
+    </TableView>
+
+    <!-- Botones de Acción -->
+    <HBox spacing="10" layoutX="400" layoutY="440" prefWidth="290" prefHeight="40" style="-fx-padding: 5;">
+        <Button text="Agregar" onAction="#agregarUsuario" prefWidth="80"/>
+        <Button text="Modificar" onAction="#modificarUsuario" prefWidth="80"/>
+        <Button text="Eliminar" onAction="#eliminarUsuario" prefWidth="80"/>
+    </HBox>
+
+</AnchorPane>

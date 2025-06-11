@@ -73,7 +73,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnGestionPersonal(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLGestionClientes.fxml", "Gestión de Personal");
+        abrirNuevaVentana("/vista/FXMLGestionUsuarios.fxml", "Gestión de Personal");
     }
 
     @FXML
