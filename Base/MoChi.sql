@@ -93,7 +93,7 @@ CREATE TABLE `compras` (
   PRIMARY KEY (`idCompras`),
   KEY `Proveedor_idProveedor` (`Proveedor_idProveedor`),
   CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`Proveedor_idProveedor`) REFERENCES `proveedor` (`idProveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `compras` (
 
 LOCK TABLES `compras` WRITE;
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
-INSERT INTO `compras` VALUES (6,1,480.00,'2025-06-10'),(7,4,144.00,'2025-06-10'),(8,5,240.00,'2025-06-10');
+INSERT INTO `compras` VALUES (15,2,36478.00,'2025-06-11');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +130,6 @@ CREATE TABLE `detalle_compra` (
 
 LOCK TABLES `detalle_compra` WRITE;
 /*!40000 ALTER TABLE `detalle_compra` DISABLE KEYS */;
-INSERT INTO `detalle_compra` VALUES (6,6,12,20.00),(7,5,12,12.00),(8,6,12,20.00);
 /*!40000 ALTER TABLE `detalle_compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +208,7 @@ CREATE TABLE `producto` (
   `Cantidad_Actual` int DEFAULT NULL,
   `Cantidad_Minima` int DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +217,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',13.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70),(5,'Fanta de fresa','600',20.00,30,50),(6,'Prueba','200',30.00,20,30);
+INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',13.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70),(5,'Fanta de fresa','600',20.00,59,50),(6,'Prueba','200',30.00,31,30),(7,'Prueba2','123',20.00,251,200);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,4 +543,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-10 22:38:51
+-- Dump completed on 2025-06-11 16:36:29
