@@ -34,7 +34,7 @@
                 <Button fx:id="btnGestionClientes" onAction="#btnGestionClientes" text="Gestión de Clientes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Button fx:id="btnRealizarVentas" onAction="#btnRealizarVentas" text="Realizar Ventas" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Button fx:id="btnGestionProductos" onAction="#btnGestionProductos" text="Gestión de Productos" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Gestión de Promociones" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="btnGestionPromociones" mnemonicParsing="false" onAction="#btnGestionPromociones" text="Gestión de Promociones" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
             <columnConstraints>
                 <ColumnConstraints />
