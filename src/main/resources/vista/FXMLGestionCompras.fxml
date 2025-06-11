@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mochi.controladores.FXMLGestionComprasController">
+
+    <!-- Título -->
+    <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Gestión de Compras" />
+
+    <!-- Campo de búsqueda -->
+    <TextField fx:id="txtBuscar" layoutX="10" layoutY="40" prefWidth="300" promptText="Buscar por nombre..." />
+
+    <!-- Botón Regresar -->
+    <Button layoutX="600" layoutY="10" onAction="#regresarVentana" text="Regresar" />
+
+    <!-- Tabla de Productos -->
+    <TableView fx:id="tablaProductos" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680">
+        <columns>
+            <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
+            <TableColumn fx:id="colPresentacion" prefWidth="120" text="Presentación" />
+            <TableColumn fx:id="colCosto" prefWidth="80" text="Costo" />
+            <TableColumn fx:id="colCantidadActual" prefWidth="120" text="Cantidad Actual" />
+            <TableColumn fx:id="colCantidadMinima" prefWidth="120" text="Cantidad Mínima" />
+        </columns>
+    </TableView>
+
+    <!-- Botón para registrar entradas -->
+    <Button layoutX="400" layoutY="440" prefWidth="200"
+            onAction="#registrarEntradas"
+            text="Registrar Entradas de Productos" />
+
+</AnchorPane>

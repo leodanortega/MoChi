@@ -68,7 +68,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnRegistroCompras(ActionEvent event) {
-        abrirNuevaVentana("/mochi/vista/FXMLRegistroCompras.fxml", "Registro de Compras");
+        abrirNuevaVentana("/vista/FXMLGestionCompras.fxml", "Registro de Compras");
     }
 
     @FXML

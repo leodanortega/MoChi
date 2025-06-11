@@ -8,7 +8,7 @@
    <children>
    
        <!-- Título -->
-       <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Lista de Productos" />
+       <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Productos con stock bajo" />
    
        <!-- Campo de búsqueda -->
        <TextField fx:id="txtBuscar" layoutX="10" layoutY="40" prefWidth="300" promptText="Buscar por nombre..." />
