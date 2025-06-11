@@ -96,4 +96,8 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
             System.err.println("No se pudo abrir la ventana: " + rutaFXML);
         }
     }
+
+    public void btnGestionPromociones(ActionEvent actionEvent) {
+        abrirNuevaVentana("/vista/FXMLGestionPromociones.fxml", "Gestion de Promociones");
+    }
 }
