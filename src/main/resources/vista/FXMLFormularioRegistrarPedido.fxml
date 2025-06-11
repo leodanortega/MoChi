@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="270" prefWidth="400" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mochi.controladores.FXMLFormularioRegistrarPedidoController">
+    <children>
+
+        <!-- Título -->
+        <Label layoutX="20" layoutY="10" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Realizar pedido"/>
+
+        <!-- Nombre del producto -->
+        <Label layoutX="20" layoutY="60" text="Producto:"/>
+        <Label fx:id="lblNombreProducto" layoutX="100" layoutY="60" style="-fx-font-weight: bold;"/>
+
+        <!-- Cantidad a pedir -->
+        <Label layoutX="20" layoutY="100" text="Cantidad:"/>
+        <TextField fx:id="txtCantidad" layoutX="100" layoutY="95" prefWidth="100"/>
+
+        <!-- Precio de compra -->
+        <Label layoutX="20" layoutY="140" text="Precio Compra:"/>
+        <TextField fx:id="txtPrecioCompra" layoutX="100" layoutY="135" prefWidth="100"/>
+
+        <!-- Selección del proveedor -->
+        <Label layoutX="20" layoutY="180" text="Proveedor:"/>
+        <ComboBox fx:id="cmbProveedor" layoutX="100" layoutY="175" prefWidth="200"/>
+
+        <!-- Botones -->
+        <HBox layoutX="185.0" layoutY="220.0" spacing="10">
+            <children>
+                <Button text="Confirmar" onAction="#confirmarPedido"/>
+            </children>
+        </HBox>
+
+    </children>
+</AnchorPane>

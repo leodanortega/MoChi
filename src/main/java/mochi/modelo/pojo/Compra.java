@@ -1,19 +1,21 @@
 package mochi.modelo.pojo;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Compra{
+public class Compra {
 
-    //private int idProovedor;
     private int idCompra;
+    private int idProveedor;
     private double total;
     private LocalDate fecha;
 
     public Compra() {
     }
 
-    public Compra(int idCompra, double total, LocalDate fecha) {
+    public Compra(int idCompra, int idProveedor, double total, LocalDate fecha) {
         this.idCompra = idCompra;
+        this.idProveedor = idProveedor;
         this.total = total;
         this.fecha = fecha;
     }
@@ -26,7 +28,15 @@ public class Compra{
         this.idCompra = idCompra;
     }
 
-    public double getTotal() {
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public Double getTotal() {
         return total;
     }
 
