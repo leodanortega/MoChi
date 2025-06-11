@@ -13,9 +13,7 @@ import javafx.stage.Stage;
 import mochi.dao.ProductoDAO;
 import mochi.modelo.pojo.Producto;
 import javafx.scene.control.Alert;
-import mochi.modelo.pojo.Producto;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +23,6 @@ public class FXMLGestionProductosController {
 
     @FXML
     private TableView<Producto> tablaProductos;
-
-    @FXML
-    private TableColumn<Producto, Integer> colId;
 
     @FXML
     private TableColumn<Producto, String> colNombre;
@@ -71,7 +66,6 @@ public class FXMLGestionProductosController {
     }
 
     private void configurarTabla() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("idProducto"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         colPresentacion.setCellValueFactory(new PropertyValueFactory<>("Presentacion"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("Costo"));

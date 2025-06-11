@@ -17,7 +17,6 @@
     <!-- Tabla de Productos -->
     <TableView fx:id="tablaProductos" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680">
         <columns>
-            <TableColumn fx:id="colId" prefWidth="50" text="ID" />
             <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
             <TableColumn fx:id="colPresentacion" prefWidth="120" text="Presentación" />
             <TableColumn fx:id="colCosto" prefWidth="80" text="Costo" />

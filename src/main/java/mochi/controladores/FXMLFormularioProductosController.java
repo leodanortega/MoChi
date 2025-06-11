@@ -29,8 +29,6 @@ public class FXMLFormularioProductosController {
         }
     }
 
-
-
     @FXML
     private void guardarProducto() {
         String nombre = tfNombre.getText().trim();
