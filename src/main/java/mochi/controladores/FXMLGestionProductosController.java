@@ -13,7 +13,7 @@ import mochi.modelo.pojo.Producto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FXMLGestionarProductosController {
+public class FXMLGestionProductosController {
 
     @FXML
     private TableView<Producto> tablaProductos;
@@ -63,11 +63,11 @@ public class FXMLGestionarProductosController {
 
     private void configurarTabla() {
         colId.setCellValueFactory(new PropertyValueFactory<>("idProducto"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colPresentacion.setCellValueFactory(new PropertyValueFactory<>("presentacion"));
-        colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
-        colCantidadActual.setCellValueFactory(new PropertyValueFactory<>("cantidadActual"));
-        colCantidadMinima.setCellValueFactory(new PropertyValueFactory<>("cantidadMinima"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        colPresentacion.setCellValueFactory(new PropertyValueFactory<>("Presentacion"));
+        colCosto.setCellValueFactory(new PropertyValueFactory<>("Costo"));
+        colCantidadActual.setCellValueFactory(new PropertyValueFactory<>("Cantidad_Actual"));
+        colCantidadMinima.setCellValueFactory(new PropertyValueFactory<>("Cantidad_Minima"));
     }
 
     private void cargarProductos() {

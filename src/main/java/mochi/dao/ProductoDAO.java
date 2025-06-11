@@ -28,11 +28,11 @@ public class ProductoDAO {
             while (rs.next()) {
                 Producto p = new Producto();
                 p.setIdProducto(rs.getInt("idProducto"));
-                p.setNombre(rs.getString("nombre"));
-                p.setPresentacion(rs.getString("presentacion"));
-                p.setCosto(rs.getDouble("costo"));
-                p.setCantidadActual(rs.getInt("cantidadActual"));
-                p.setCantidadMinima(rs.getInt("cantidadMinima"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setPresentacion(rs.getString("Presentacion"));
+                p.setCosto(rs.getDouble("Costo"));
+                p.setCantidadActual(rs.getInt("Cantidad_Actual"));
+                p.setCantidadMinima(rs.getInt("Cantidad_Minima"));
                 lista.add(p);
             }
         } catch (SQLException e) {
@@ -50,7 +50,7 @@ public class ProductoDAO {
     }
 
     public boolean agregar(Producto p) {
-        String sql = "INSERT INTO producto(nombre, presentacion, costo, cantidadActual, cantidadMinima) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO producto(Nombre, Presentacion, Costo, Cantidad_Actual, Cantidad_Minima) VALUES (?, ?, ?, ?, ?)";
         Connection con = null;
         PreparedStatement ps = null;
 
@@ -80,7 +80,7 @@ public class ProductoDAO {
     }
 
     public boolean modificar(Producto p) {
-        String sql = "UPDATE producto SET nombre = ?, presentacion = ?, costo = ?, cantidadActual = ?, cantidadMinima = ? WHERE idProducto = ?";
+        String sql = "UPDATE producto SET Nombre = ?, Presentacion = ?, Costo = ?, Cantidad_Actual = ?, Cantidad_Minima = ? WHERE idProducto = ?";
         Connection con = null;
         PreparedStatement ps = null;
 

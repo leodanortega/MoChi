@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLGestionarProductosController"
+            fx:controller="mochi.controladores.FXMLGestionProductosController"
             prefWidth="700" prefHeight="500">
 
     <!-- Título -->
