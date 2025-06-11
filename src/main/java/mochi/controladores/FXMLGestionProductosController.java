@@ -4,13 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mochi.dao.ProductoDAO;
 import mochi.modelo.pojo.Producto;
+import javafx.scene.control.Alert;
+import mochi.modelo.pojo.Producto;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FXMLGestionProductosController {
@@ -50,15 +58,16 @@ public class FXMLGestionProductosController {
 
     private ObservableList<Producto> productos;
 
+    private ProductoDAO productoDAO;
+
     @FXML
     public void initialize() {
+        productoDAO = new ProductoDAO();
+
         configurarTabla();
         cargarProductos();
         configurarBusqueda();
 
-        btnAgregar.setOnAction(e -> agregarProducto());
-        btnModificar.setOnAction(e -> modificarProducto());
-        btnEliminar.setOnAction(e -> eliminarProducto());
     }
 
     private void configurarTabla() {
@@ -96,33 +105,74 @@ public class FXMLGestionProductosController {
         // Aquí abres la ventana principal, si la tienes
     }
 
-    public void agregarProducto() {
-        // Aquí puedes abrir un formulario para registrar un nuevo producto
-        System.out.println("Agregar producto");
-    }
+    public void agregarProducto(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioProductos.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Agregar Producto");
+            stage.initModality(Modality.APPLICATION_MODAL);
 
-    public void modificarProducto() {
-        Producto seleccionado = tablaProductos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            // Aquí puedes abrir un formulario con los datos del producto para modificar
-            System.out.println("Modificar producto: " + seleccionado.getNombre());
-        } else {
-            mostrarAlerta("Debes seleccionar un producto para modificar.");
+            // No se pasa producto para agregar
+            stage.showAndWait();
+
+            // Refrescar tabla al cerrar ventana
+            cargarProductos();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error al abrir el formulario de producto.");
         }
     }
 
-    public void eliminarProducto() {
+    public void modificarProducto(ActionEvent actionEvent) {
         Producto seleccionado = tablaProductos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            boolean exito = new ProductoDAO().eliminar(seleccionado.getIdProducto());
-            if (exito) {
-                productos.remove(seleccionado);
-                tablaProductos.refresh();
+        if (seleccionado == null) {
+            mostrarAlerta("Selecciona un producto para modificar.");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioProductos.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Modificar Producto");
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Pasar el producto seleccionado al controlador del formulario
+            FXMLFormularioProductosController controlador = loader.getController();
+            controlador.inicializarFormulario(seleccionado);
+
+            stage.showAndWait();
+
+            // Refrescar tabla al cerrar ventana
+            cargarProductos();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error al abrir el formulario de provseedor.");
+        }
+    }
+
+    public void eliminarProducto(ActionEvent actionEvent) {
+        Producto seleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            mostrarAlerta("Selecciona un producto para eliminar.");
+            return;
+        }
+
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar eliminación");
+        confirmacion.setHeaderText(null);
+        confirmacion.setContentText("¿Estás seguro de eliminar el producto seleccionado?");
+        Optional<ButtonType> result = confirmacion.showAndWait();
+
+        if (result.isPresent() && result.get() == javafx.scene.control.ButtonType.OK) {
+            boolean eliminado = productoDAO.eliminar(seleccionado.getIdProducto());
+            if (eliminado) {
+                mostrarAlerta("Producto eliminado correctamente.");
+                cargarProductos();
             } else {
-                mostrarAlerta("Error al eliminar el producto.");
+                mostrarAlerta("No se pudo eliminar el producto.");
             }
-        } else {
-            mostrarAlerta("Debes seleccionar un producto para eliminar.");
         }
     }
 
