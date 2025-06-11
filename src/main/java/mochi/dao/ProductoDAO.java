@@ -135,5 +135,31 @@ public class ProductoDAO {
             }
         }
     }
+
+    public List<Producto> listarProductosFaltantes() {
+        List<Producto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM producto WHERE Cantidad_Actual < Cantidad_Minima";
+
+        try (Connection con = Conexion.getConexion().getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt("idProducto"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setPresentacion(rs.getString("Presentacion"));
+                p.setCosto(rs.getDouble("Costo"));
+                p.setCantidadActual(rs.getInt("Cantidad_Actual"));
+                p.setCantidadMinima(rs.getInt("Cantidad_Minima"));
+                lista.add(p);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
 }
 

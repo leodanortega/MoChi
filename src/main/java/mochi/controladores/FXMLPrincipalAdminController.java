@@ -58,7 +58,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnGestionPedidos(ActionEvent event) {
-        abrirNuevaVentana("/mochi/vista/FXMLCatalogoPedidos.fxml", "Gestión de Pedidos");
+        abrirNuevaVentana("/vista/FXMLGestionPedidos.fxml", "Gestión de Pedidos");
     }
 
     @FXML
@@ -85,12 +85,6 @@ public class FXMLPrincipalAdminController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
             Parent root = loader.load();
-
-            // Si deseas pasar el usuario a la nueva vista, puedes hacerlo aquí:
-            // Ejemplo:
-            // FXMLCatalogoProveedoresController controller = loader.getController();
-            // controller.setUsuario(usuario);
-
             Stage stage = new Stage();
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));
