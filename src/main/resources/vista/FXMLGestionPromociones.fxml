@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLGestionPromocionesController">
+
+    <!-- Título -->
+    <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Lista de Promociones" />
+
+    <!-- Campo de búsqueda -->
+    <TextField fx:id="txtBuscar" layoutX="10" layoutY="40" prefWidth="300" promptText="Buscar por nombre..." />
+
+    <!-- Botón Regresar -->
+    <Button layoutX="600" layoutY="10" onAction="#regresarVentana" text="Regresar" />
+
+    <!-- Tabla de Productos -->
+    <TableView fx:id="tablaPromociones" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680">
+        <columns>
+            <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
+            <TableColumn fx:id="colPresentacion" prefWidth="120" text="Presentación" />
+            <TableColumn fx:id="colCosto" prefWidth="80" text="Costo" />
+            <TableColumn fx:id="colCantidadActual" prefWidth="120" text="Cantidad Actual" />
+            <TableColumn fx:id="colCantidadMinima" prefWidth="120" text="Cantidad Mínima" />
+        </columns>
+    </TableView>
+
+    <!-- Botones de Acción -->
+    <HBox alignment="CENTER" layoutX="400" layoutY="440" prefHeight="40" prefWidth="290" spacing="10" style="-fx-padding: 5;">
+        <Button onAction="#agregarPromocion" prefWidth="80" text="Agregar" />
+        <Button onAction="#eliminarPromocion" prefWidth="80" text="Eliminar" />
+    </HBox>
+
+</AnchorPane>

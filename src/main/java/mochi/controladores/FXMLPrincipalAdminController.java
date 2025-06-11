@@ -63,7 +63,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnGestionPromociones(ActionEvent event) {
-        abrirNuevaVentana("/mochi/vista/FXMLCatalogoPromociones.fxml", "Gestión de Promociones");
+        abrirNuevaVentana("/vista/FXMLGestionPromociones.fxml", "Gestión de Promociones");
     }
 
     @FXML
