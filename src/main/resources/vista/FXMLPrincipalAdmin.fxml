@@ -38,7 +38,6 @@
                <Button fx:id="btnRegistroCompras" onAction="#btnRegistroCompras" text="Registro de Compras" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                <Button fx:id="btnGestionPersonal" onAction="#btnGestionPersonal" text="Gestión de Personal" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                <Button fx:id="btnVerReportes" onAction="#btnVerReportes" text="Visualización de Reportes" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="btnGestionProductos" mnemonicParsing="false" onAction="#btnGestionProductos" text="Productos" GridPane.rowIndex="3" />
            </children>
          <columnConstraints>
             <ColumnConstraints />

@@ -66,6 +66,16 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
         abrirNuevaVentana("/vista/FXMLConsultaProductos.fxml", "Consulta de Productos y Promociones");
     }
 
+    @FXML
+    private void btnGestionProductos(ActionEvent event) {
+        abrirNuevaVentana("/vista/FXMLGestionProductos.fxml", "Gestión de Productos");
+    }
+
+    /*@FXML
+    private void btnGestionPromociones(ActionEvent event) {
+        abrirNuevaVentana("mochi/vista/FXMLGestionPromociones.fxml", "Gestión de Promociones");
+    }*/
+
     private void abrirNuevaVentana(String rutaFXML, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
