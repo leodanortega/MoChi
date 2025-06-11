@@ -72,7 +72,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María López','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(6,'Carlos Martín','Calle 123','123','123','1223',1),(7,'Leo','Mi casa','17892371','102831902','jmaslkdja',1);
+INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María Lópe','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(6,'Carlos Martín','Calle 123','123','123','1223',1);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,14 +201,14 @@ DROP TABLE IF EXISTS `producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
-  `idProducto` int NOT NULL,
+  `idProducto` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) DEFAULT NULL,
   `Presentacion` varchar(50) DEFAULT NULL,
   `Costo` decimal(10,2) DEFAULT NULL,
   `Cantidad_Actual` int DEFAULT NULL,
   `Cantidad_Minima` int DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',12.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70);
+INSERT INTO `producto` VALUES (1,'Coca-Cola','Lata 355ml',13.00,200,50),(2,'Pepsi','Botella 600ml',15.00,150,40),(3,'Fanta','Lata 355ml',12.00,100,30),(4,'Agua Ciel','Botella 500ml',200.00,300,70),(5,'Fanta de fresa','600',20.00,30,50);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,10 +293,10 @@ CREATE TABLE `usuario` (
   `apellidoPaterno` varchar(50) DEFAULT NULL,
   `apellidoMaterno` varchar(50) DEFAULT NULL,
   `usuario` varchar(50) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
   `tipo` int DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,4 +543,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-10 14:21:11
+-- Dump completed on 2025-06-10 20:16:49
