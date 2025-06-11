@@ -15,15 +15,7 @@
     <Button layoutX="600" layoutY="10" onAction="#regresarVentana" text="Regresar" />
 
     <!-- Tabla de Productos -->
-    <TableView fx:id="tablaPromociones" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680">
-        <columns>
-            <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
-            <TableColumn fx:id="colPresentacion" prefWidth="120" text="Presentación" />
-            <TableColumn fx:id="colCosto" prefWidth="80" text="Costo" />
-            <TableColumn fx:id="colCantidadActual" prefWidth="120" text="Cantidad Actual" />
-            <TableColumn fx:id="colCantidadMinima" prefWidth="120" text="Cantidad Mínima" />
-        </columns>
-    </TableView>
+    <TableView fx:id="tablaPromociones" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680"/>
 
     <!-- Botones de Acción -->
     <HBox alignment="CENTER" layoutX="400" layoutY="440" prefHeight="40" prefWidth="290" spacing="10" style="-fx-padding: 5;">
