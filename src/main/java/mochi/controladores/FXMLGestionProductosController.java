@@ -75,8 +75,8 @@ public class FXMLGestionProductosController {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         colPresentacion.setCellValueFactory(new PropertyValueFactory<>("Presentacion"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("Costo"));
-        colCantidadActual.setCellValueFactory(new PropertyValueFactory<>("Cantidad_Actual"));
-        colCantidadMinima.setCellValueFactory(new PropertyValueFactory<>("Cantidad_Minima"));
+        colCantidadActual.setCellValueFactory(new PropertyValueFactory<>("CantidadActual"));
+        colCantidadMinima.setCellValueFactory(new PropertyValueFactory<>("CantidadMinima"));
     }
 
     private void cargarProductos() {
