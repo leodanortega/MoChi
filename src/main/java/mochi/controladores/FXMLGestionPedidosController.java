@@ -4,10 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import mochi.dao.CompraDAO;
 import mochi.dao.ProductoDAO;
+import mochi.modelo.pojo.Compra;
 import mochi.modelo.pojo.Producto;
 
 import java.util.List;
@@ -83,10 +89,41 @@ public class FXMLGestionPedidosController {
 
     @FXML
     public void realizarPedido(ActionEvent actionEvent) {
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Pedido");
-        alerta.setHeaderText(null);
-        alerta.setContentText("Funcionalidad de realizar pedido aún no implementada.");
-        alerta.showAndWait();
+        Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+
+        if (productoSeleccionado == null) {
+            // alerta de que seleccione producto
+            return;
+        }
+
+        CompraDAO compraDAO = new CompraDAO();
+        Compra compra = new Compra();
+        compra.setTotal(0); // Inicial 0
+        compra.setIdProveedor(1); // o un valor neutro, pues el proveedor se definirá en el formulario
+
+        int idCompra = compraDAO.crearCompraSinDetalles(compra);
+
+        if (idCompra > 0) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioRegistrarPedido.fxml"));
+                Parent root = loader.load();
+
+                FXMLFormularioRegistrarPedidoController controller = loader.getController();
+                controller.inicializarDatos(productoSeleccionado.getIdProducto(), productoSeleccionado.getNombre(), idCompra);
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Registrar Pedido");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+
+                cargarProductosFaltantes();
+            } catch (Exception e) {
+                // Manejar excepción
+            }
+        } else {
+            // Mostrar error al crear compra
+        }
     }
+
 }

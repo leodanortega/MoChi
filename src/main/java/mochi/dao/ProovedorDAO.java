@@ -12,6 +12,32 @@ import java.util.List;
 
 public class ProovedorDAO {
 
+    public List<Proovedor> obtenerProveedores() {
+        List<Proovedor> lista = new ArrayList<>();
+        String sql = "SELECT * FROM proveedor";
+
+        try (Connection con = Conexion.getConexion().getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Proovedor p = new Proovedor();
+                p.setIdProovedor(rs.getInt("idProveedor"));
+                p.setNombre(rs.getString("nombre"));
+                p.setRfc(rs.getString("RFC"));
+                p.setDireccion(rs.getString("Direccion"));
+                p.setTelefono(rs.getString("telefono"));
+                p.setEmail(rs.getString("correo"));
+                lista.add(p);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
     public List<Proovedor> listar() {
         List<Proovedor> lista = new ArrayList<>();
         String sql = "SELECT * FROM proveedor";
@@ -134,5 +160,25 @@ public class ProovedorDAO {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public String obtenerNombreProveedorPorIdCompra(int idCompra) {
+        String sql = "SELECT p.nombre FROM proveedor p " +
+                "JOIN compras c ON c.Proveedor_idProveedor = p.idProveedor " +
+                "WHERE c.idCompras = ?";
+
+        try (Connection con = Conexion.getConexion().getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idCompra);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("nombre");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
