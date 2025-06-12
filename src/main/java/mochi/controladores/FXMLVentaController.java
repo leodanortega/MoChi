@@ -113,20 +113,20 @@ public class FXMLVentaController {
     }
 
     private void configurarColumnasTabla() {
-        colNombre.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getProducto().getNombre()));
+        colNombre.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getProducto().getNombre()));
 
-        colPresentacion.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getProducto().getPresentacion()));
+        colPresentacion.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getProducto().getPresentacion()));
 
-        colCosto.setCellValueFactory(cellData -> 
-            new SimpleDoubleProperty(cellData.getValue().getProducto().getCosto()).asObject());
+        colCosto.setCellValueFactory(cellData ->
+                new SimpleDoubleProperty(cellData.getValue().getProducto().getCosto()).asObject());
 
-        colCantidadActual.setCellValueFactory(cellData -> 
-            new SimpleIntegerProperty(cellData.getValue().getProducto().getCantidadActual()).asObject());
+        colCantidadActual.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().getProducto().getCantidadActual()).asObject());
 
-        colCantidadEditable.setCellValueFactory(cellData -> 
-            cellData.getValue().cantidadProperty().asObject());
+        colCantidadEditable.setCellValueFactory(cellData ->
+                cellData.getValue().cantidadProperty().asObject());
 
         tableVenta.setEditable(true);
         colCantidadEditable.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -144,11 +144,11 @@ public class FXMLVentaController {
             actualizarTotalVenta();
         });
 
-        colValorModificador.setCellValueFactory(cellData -> 
-            new SimpleDoubleProperty(cellData.getValue().getValorModificador()).asObject());
+        colValorModificador.setCellValueFactory(cellData ->
+                new SimpleDoubleProperty(cellData.getValue().getValorModificador()).asObject());
 
-        colSubtotal.setCellValueFactory(cellData -> 
-            cellData.getValue().subtotalProperty().asObject());
+        colSubtotal.setCellValueFactory(cellData ->
+                cellData.getValue().subtotalProperty().asObject());
     }
 
     private void cargarClientes() {
@@ -171,16 +171,9 @@ public class FXMLVentaController {
     private void cargarPromociones() {
         promocionesActivasHoy = promocionDAO.obtenerPromocionesActivasHoy();
 
-        System.out.println("Promociones activas cargadas: " + promocionesActivasHoy.size());
-
         for (Promocion promo : promocionesActivasHoy) {
-           double valor = ((-promo.getValorModificador()/100)+1);
-           promo.setValorModificador(valor);
-
-            System.out.println("→ ID Promoción: " + promo.getIdPromocion() +
-                               ", Cliente ID: " + promo.getIdCliente() +
-                               ", Producto ID: " + promo.getIdProducto() +
-                               ", Valor: " + promo.getValorModificador());
+            double valor = ((-promo.getValorModificador() / 100) + 1);
+            promo.setValorModificador(valor);
         }
     }
 
@@ -200,9 +193,19 @@ public class FXMLVentaController {
             btnProducto.setPrefHeight(60);
             GridPane.setHgrow(btnProducto, Priority.ALWAYS);
 
+            // Estilo de color personalizado
+            btnProducto.setStyle(
+                    "-fx-background-color: #d4ac0d;" +
+                            "-fx-text-fill: white;" +
+                            "-fx-font-weight: bold;" +
+                            "-fx-background-radius: 8px;" +
+                            "-fx-cursor: hand;"
+            );
+
+
             btnProducto.setTooltip(new Tooltip(
-                "Presentación: " + producto.getPresentacion() + "\n" +
-                "Precio: $" + producto.getCosto()));
+                    "Presentación: " + producto.getPresentacion() + "\n" +
+                            "Precio: $" + producto.getCosto()));
 
             btnProducto.setOnAction(e -> agregarProductoAVenta(producto));
 
@@ -244,8 +247,8 @@ public class FXMLVentaController {
 
     private double verificarPromocionParaProducto(Producto producto, Cliente cliente) {
         for (Promocion promo : promocionesActivasHoy) {
-            if (promo.getIdCliente() == cliente.getIdCliente() && 
-                promo.getIdProducto() == producto.getIdProducto()) {
+            if (promo.getIdCliente() == cliente.getIdCliente() &&
+                    promo.getIdProducto() == producto.getIdProducto()) {
                 return promo.getValorModificador();
             }
         }
@@ -280,15 +283,12 @@ public class FXMLVentaController {
         mensaje.append(cliente.getNombre()).append(" tiene las siguientes promociones:\n\n");
 
         for (Promocion promo : promocionesCliente) {
-            // Buscar el producto para obtener el nombre
             Producto prod = productos.stream()
-                            .filter(p -> p.getIdProducto() == promo.getIdProducto())
-                            .findFirst()
-                            .orElse(null);
+                    .filter(p -> p.getIdProducto() == promo.getIdProducto())
+                    .findFirst()
+                    .orElse(null);
 
             if (prod != null) {
-                // Asumimos que el valor modificador es el multiplicador del precio (ej: 0.8 para 20% descuento)
-                // Para obtener el porcentaje de descuento:
                 double descuento = (1 - promo.getValorModificador()) * 100;
                 mensaje.append(String.format("%s tiene un descuento de %.0f%%\n", prod.getNombre(), descuento));
             }
@@ -311,55 +311,52 @@ public class FXMLVentaController {
         Stage stage = (Stage) cbCliente.getScene().getWindow();
         stage.close();
     }
-    
+
     private void generarVenta() {
-    Cliente clienteSeleccionado = cbCliente.getSelectionModel().getSelectedItem();
-    List<ProductoVentaDTO> productosVenta = tableVenta.getItems();
+        Cliente clienteSeleccionado = cbCliente.getSelectionModel().getSelectedItem();
+        List<ProductoVentaDTO> productosVenta = tableVenta.getItems();
 
-    if (clienteSeleccionado == null) {
-        mostrarAlerta(Alert.AlertType.WARNING, "Cliente no seleccionado", "Debes seleccionar un cliente.");
-        return;
+        if (clienteSeleccionado == null) {
+            mostrarAlerta(Alert.AlertType.WARNING, "Cliente no seleccionado", "Debes seleccionar un cliente.");
+            return;
+        }
+
+        if (productosVenta.isEmpty()) {
+            mostrarAlerta(Alert.AlertType.WARNING, "Venta vacía", "Agrega productos a la venta antes de continuar.");
+            return;
+        }
+
+        int idCliente = clienteSeleccionado.getIdCliente();
+        int idVenta = ventaDAO.generarVenta(idCliente);
+
+        if (idVenta <= 0) {
+            mostrarAlerta(Alert.AlertType.ERROR, "Error al generar venta", "No se pudo crear la venta.");
+            return;
+        }
+
+        List<DetalleVenta> detalles = new ArrayList<>();
+        for (ProductoVentaDTO dto : productosVenta) {
+            DetalleVenta detalle = new DetalleVenta();
+            detalle.setIdProducto(dto.getProducto().getIdProducto());
+            detalle.setIdVenta(idVenta);
+            detalle.setCantidadProducto(dto.getCantidad());
+            detalle.setTotalProducto(dto.getSubtotal());
+            detalles.add(detalle);
+        }
+
+        DetalleventaDAO.registrarDetalle(detalles);
+
+        mostrarAlerta(Alert.AlertType.INFORMATION, "Venta registrada", "La venta se registró correctamente");
+
+        limpiarTablaVenta();
+        actualizarTotalVenta();
     }
 
-    if (productosVenta.isEmpty()) {
-        mostrarAlerta(Alert.AlertType.WARNING, "Venta vacía", "Agrega productos a la venta antes de continuar.");
-        return;
-    }
-
-    int idCliente = clienteSeleccionado.getIdCliente();
-    int idVenta = ventaDAO.generarVenta(idCliente);
-
-    if (idVenta <= 0) {
-        mostrarAlerta(Alert.AlertType.ERROR, "Error al generar venta", "No se pudo crear la venta.");
-        return;
-    }
-
-    List<DetalleVenta> detalles = new ArrayList<>();
-    for (ProductoVentaDTO dto : productosVenta) {
-        DetalleVenta detalle = new DetalleVenta();
-        detalle.setIdProducto(dto.getProducto().getIdProducto());
-        detalle.setIdVenta(idVenta);
-        detalle.setCantidadProducto(dto.getCantidad());
-        detalle.setTotalProducto(dto.getSubtotal());
-        detalles.add(detalle);
-    }
-
-    DetalleventaDAO.registrarDetalle(detalles);
-
-    mostrarAlerta(Alert.AlertType.INFORMATION, "Venta registrada", "La venta se registró correctamente");
-
-    limpiarTablaVenta();
-    actualizarTotalVenta();
-}
-    
     private void mostrarAlerta(Alert.AlertType tipo, String titulo, String contenido) {
-    Alert alerta = new Alert(tipo);
-    alerta.setTitle(titulo);
-    alerta.setHeaderText(null);
-    alerta.setContentText(contenido);
-    alerta.showAndWait();
-}
-
-
-    
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(contenido);
+        alerta.showAndWait();
+    }
 }
