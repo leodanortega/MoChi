@@ -36,16 +36,7 @@ public class FXMLIniciarSesionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conexion = Conexion.getConexion("administrador").getConnection();
 
-        if (conexion == null) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
-                    "Error de conexión",
-                    "No se pudo establecer conexión con la base de datos.");
-            System.err.println("️ ERROR: conexión es null. Verifica configuración y driver.");
-        } else {
-            System.out.println(" Conexión a la base de datos establecida correctamente.");
-        }
     }
 
     @FXML
@@ -54,8 +45,30 @@ public class FXMLIniciarSesionController implements Initializable {
         String password = pfContrasena.getText();
 
         if (validarCampos(username, password)) {
-            Usuario usuarioSesion = validarCredenciales(username, password);
+            // Intentamos conexión mínima solo para verificar login
+            Connection loginCon = Conexion.getConexion("empleado").getConnection(); // o rol fijo si tienes uno
+            if (loginCon == null) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de conexión", "No se pudo conectar con la base de datos.");
+                return;
+            }
+
+            Usuario usuarioSesion = validarCredenciales(username, password, loginCon);
             if (usuarioSesion != null) {
+                try {
+                    loginCon.close(); // Cerramos la conexión temporal
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                // Crear la conexión definitiva según el tipo
+                String perfilConexion = (usuarioSesion.getTipo() == 1) ? "administrador" : "empleado";
+                conexion = Conexion.getConexion(perfilConexion).getConnection();
+
+                if (conexion == null) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo establecer conexión como " + perfilConexion);
+                    return;
+                }
+
                 irPantallaPrincipal(usuarioSesion);
             }
         }
@@ -78,9 +91,9 @@ public class FXMLIniciarSesionController implements Initializable {
         return camposValidos;
     }
 
-    private Usuario validarCredenciales(String username, String password) {
+    private Usuario validarCredenciales(String username, String password, Connection con) {
         try {
-            Usuario usuarioSesion = InicioSesionDAO.verificarCredenciales(conexion, username, password);
+            Usuario usuarioSesion = InicioSesionDAO.verificarCredenciales(con, username, password);
             if (usuarioSesion != null) {
                 Utilidad.mostrarAlertaSimple(
                         Alert.AlertType.INFORMATION,
@@ -103,16 +116,14 @@ public class FXMLIniciarSesionController implements Initializable {
         }
     }
 
-
     private void irPantallaPrincipal(Usuario usuarioSesion) {
         try {
             Stage escenarioBase = (Stage) tfUsuario.getScene().getWindow();
             FXMLLoader cargador;
 
-            // Determina qué vista cargar según el tipo de usuario
-            if (usuarioSesion.getTipo() == 1) { // Administrador
+            if (usuarioSesion.getTipo() == 1) {
                 cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPrincipalAdmin.fxml"));
-            } else if (usuarioSesion.getTipo() == 2) { // Empleado
+            } else if (usuarioSesion.getTipo() == 2) {
                 cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPrincipalEmpleado.fxml"));
             } else {
                 System.err.println("Tipo de usuario desconocido.");
@@ -121,7 +132,6 @@ public class FXMLIniciarSesionController implements Initializable {
 
             Parent vista = cargador.load();
 
-            // Asigna el usuario al controlador correspondiente
             Object controlador = cargador.getController();
             if (controlador instanceof FXMLPrincipalAdminController) {
                 ((FXMLPrincipalAdminController) controlador).setUsuario(usuarioSesion);
@@ -138,6 +148,5 @@ public class FXMLIniciarSesionController implements Initializable {
             System.err.println("Error al cargar la pantalla principal.");
         }
     }
-
-
 }
+

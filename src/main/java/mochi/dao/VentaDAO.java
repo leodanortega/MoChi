@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mochi.dao;
 
 import java.sql.Connection;
@@ -17,27 +13,27 @@ import mochi.modelo.pojo.DetalleVenta;
 import mochi.modelo.pojo.Venta;
 
 public class VentaDAO {
- public int generarVenta(int idCliente) {
-    String sql = "SELECT crear_venta_cliente(?) AS idVenta";
-    int idGenerado = -1;
+    public int generarVenta(int idCliente) {
+        String sql = "SELECT crear_venta_cliente(?) AS idVenta";
+        int idGenerado = -1;
 
-    try (Connection con = Conexion.getConexion("administrador").getConnection();
-         PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
-        ps.setInt(1, idCliente);
+            ps.setInt(1, idCliente);
 
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            idGenerado = rs.getInt("idVenta");
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idGenerado = rs.getInt("idVenta");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+
+        return idGenerado;
     }
 
-    return idGenerado;
-}
- 
-     public List<Venta> obtenerTodasLasVentas() {
+    public List<Venta> obtenerTodasLasVentas() {
         List<Venta> ventas = new ArrayList<>();
         String sql = "SELECT idVenta, Cliente_idCliente, Total, fecha FROM venta";
 
@@ -61,8 +57,8 @@ public class VentaDAO {
 
         return ventas;
     }
-     
-         public List<DetalleVenta> obtenerDetallePorVenta(int idVenta) {
+
+    public List<DetalleVenta> obtenerDetallePorVenta(int idVenta) {
         List<DetalleVenta> detalles = new ArrayList<>();
         String sql = "SELECT Producto_idProducto, Venta_idVenta, Cantidad_Producto, Total_Producto FROM detalle_venta WHERE Venta_idVenta = ?";
 
@@ -89,4 +85,3 @@ public class VentaDAO {
         return detalles;
     }
 }
-

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `mydb`;
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
@@ -65,7 +63,7 @@ CREATE TABLE `cliente` (
   `Email` varchar(100) DEFAULT NULL,
   `Requiere_Factura` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +72,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María Lópe','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(6,'Carlos Martín','Calle 123','123','123','1223',1);
+INSERT INTO `cliente` VALUES (1,'Juan Pérez','Av. Revolución 123, CDMX','JUPR900101ABC','5512345678','juan.perez@email.com',1),(2,'María Lópe','Calle Hidalgo 456, Guadalajara','MALO850203XYZ','3339876543','maria.lopez@email.com',1),(3,'Carlos Sánchez','Blvd. Morelos 789, Monterrey','CASA780315DEF','8187654321','carlos.sanchez@email.com',1),(4,'Ana Torres','Av. Juárez 321, Puebla','mars112312','2223456789','ana.torres@email.com',1),(6,'Carlos Martín','Calle 123','123','123','1223',1),(8,'Cliente Default','Sin dirección','DEFAULT000000','0000000000','default@cliente.com',0);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +156,7 @@ CREATE TABLE `detalle_venta` (
 
 LOCK TABLES `detalle_venta` WRITE;
 /*!40000 ALTER TABLE `detalle_venta` DISABLE KEYS */;
-INSERT INTO `detalle_venta` VALUES (1,1,5,60.00),(2,2,3,45.00),(4,1,6,60.00);
+INSERT INTO `detalle_venta` VALUES (1,1,5,60.00),(1,3,13,13.00),(2,2,3,45.00),(4,1,6,60.00),(7,3,20,20.00);
 /*!40000 ALTER TABLE `detalle_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +322,7 @@ CREATE TABLE `venta` (
   PRIMARY KEY (`idVenta`),
   KEY `Cliente_idCliente` (`Cliente_idCliente`),
   CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +331,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-INSERT INTO `venta` VALUES (1,1,120.00,'2025-05-21'),(2,2,45.00,'2025-05-21');
+INSERT INTO `venta` VALUES (1,1,120.00,'2025-05-21'),(2,2,45.00,'2025-05-21'),(3,1,0.00,'2025-06-12');
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,4 +541,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-11 16:36:29
+-- Dump completed on 2025-06-12 10:48:19

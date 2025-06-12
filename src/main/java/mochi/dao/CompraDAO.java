@@ -85,5 +85,4 @@ public class CompraDAO {
         }
     }
 
-    // El método registrarCompra con transacción no lo usas en este flujo, por lo que puedes mantenerlo o eliminarlo.
 }
