@@ -42,7 +42,7 @@ public class FXMLAgregarPromocionController implements Initializable {
     private void cargarClientes() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("");  // opción vacía
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pst = conn.prepareStatement(
                      "SELECT idCliente, Nombre FROM cliente ORDER BY Nombre");
              ResultSet rs = pst.executeQuery()) {
@@ -59,7 +59,7 @@ public class FXMLAgregarPromocionController implements Initializable {
     private void cargarProductos() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("");  // opción vacía
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pst = conn.prepareStatement(
                      "SELECT idProducto, Nombre FROM producto ORDER BY Nombre");
              ResultSet rs = pst.executeQuery()) {
@@ -108,7 +108,7 @@ public class FXMLAgregarPromocionController implements Initializable {
                 + "(Cliente_idCliente, Producto_idProducto, `Valor/Modificador`, Fecha_Inicio, Fecha_Fin) "
                 + "VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
             pst.setInt(1, idCliente);

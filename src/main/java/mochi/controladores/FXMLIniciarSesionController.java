@@ -36,7 +36,7 @@ public class FXMLIniciarSesionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conexion = Conexion.getConexion().getConnection();
+        conexion = Conexion.getConexion("administrador").getConnection();
 
         if (conexion == null) {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,

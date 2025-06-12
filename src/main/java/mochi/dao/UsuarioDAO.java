@@ -18,7 +18,7 @@ public class UsuarioDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -52,7 +52,7 @@ public class UsuarioDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, u.getNombre());
@@ -83,7 +83,7 @@ public class UsuarioDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, u.getNombre());
@@ -115,7 +115,7 @@ public class UsuarioDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
 
@@ -143,7 +143,7 @@ public class UsuarioDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + usernameBusqueda + "%");
 
@@ -181,7 +181,7 @@ public class UsuarioDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + nombreBusqueda + "%");
 

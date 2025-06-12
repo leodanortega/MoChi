@@ -20,7 +20,7 @@ public class DetalleVentaDAO {
     public void registrarDetalle(List<DetalleVenta> detalles) {
         String sql = "INSERT INTO detalle_venta(Producto_idProducto, Venta_idVenta, Cantidad_Producto, Total_Producto) VALUES (?, ?, ?, ?)";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             for (DetalleVenta d : detalles) {

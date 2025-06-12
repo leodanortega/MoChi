@@ -21,7 +21,7 @@ public class ProductoDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -55,7 +55,7 @@ public class ProductoDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, p.getNombre());
@@ -85,7 +85,7 @@ public class ProductoDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, p.getNombre());
@@ -116,7 +116,7 @@ public class ProductoDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, idProducto);
@@ -140,7 +140,7 @@ public class ProductoDAO {
         List<Producto> lista = new ArrayList<>();
         String sql = "SELECT * FROM producto p WHERE p.Cantidad_Actual < p.Cantidad_Minima AND NOT EXISTS ( SELECT 1 FROM detalle_compra dc WHERE dc.Producto_idProducto = p.idProducto)";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -168,7 +168,7 @@ public class ProductoDAO {
                 "INNER JOIN detalle_compra dc ON p.idProducto = dc.Producto_idProducto " +
                 "WHERE p.Cantidad_Minima > p.Cantidad_Actual";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -193,7 +193,7 @@ public class ProductoDAO {
     public boolean actualizarStockYLimpiarPedidos(Producto producto, PedidoDAO pedidoDAO) {
         Connection con = null;
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             con.setAutoCommit(false);
 
             // Actualiza la cantidad actual del producto

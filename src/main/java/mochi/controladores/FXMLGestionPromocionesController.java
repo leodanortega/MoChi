@@ -68,7 +68,7 @@ public class FXMLGestionPromocionesController {
             sql += " AND c.Nombre LIKE ?";
         }
 
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
             if (clienteFiltro != null && !clienteFiltro.isEmpty()) {
@@ -159,7 +159,7 @@ public class FXMLGestionPromocionesController {
 
         // 4) Ejecutar DELETE en la BD
         String sql = "DELETE FROM promocion WHERE idPromocion = ?";
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, idPromocion);
             int filas = pst.executeUpdate();

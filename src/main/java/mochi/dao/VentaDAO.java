@@ -18,7 +18,7 @@ public class VentaDAO {
     String sql = "SELECT crear_venta_cliente(?) AS idVenta";
     int idGenerado = -1;
 
-    try (Connection con = Conexion.getConexion().getConnection();
+    try (Connection con = Conexion.getConexion("administrador").getConnection();
          PreparedStatement ps = con.prepareStatement(sql)) {
 
         ps.setInt(1, idCliente);

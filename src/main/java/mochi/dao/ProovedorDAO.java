@@ -16,7 +16,7 @@ public class ProovedorDAO {
         List<Proovedor> lista = new ArrayList<>();
         String sql = "SELECT * FROM proveedor";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -47,7 +47,7 @@ public class ProovedorDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -81,7 +81,7 @@ public class ProovedorDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, p.getNombre());
@@ -111,7 +111,7 @@ public class ProovedorDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, p.getNombre());
@@ -142,7 +142,7 @@ public class ProovedorDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, idProovedor);
@@ -167,7 +167,7 @@ public class ProovedorDAO {
                 "JOIN compras c ON c.Proveedor_idProveedor = p.idProveedor " +
                 "WHERE c.idCompras = ?";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, idCompra);

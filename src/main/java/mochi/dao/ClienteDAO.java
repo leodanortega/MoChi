@@ -21,7 +21,7 @@ public class ClienteDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -55,7 +55,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -86,7 +86,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -118,7 +118,7 @@ public class ClienteDAO {
         PreparedStatement ps = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, idCliente);
@@ -146,7 +146,7 @@ public class ClienteDAO {
         ResultSet rs = null;
 
         try {
-            con = Conexion.getConexion().getConnection();
+            con = Conexion.getConexion("administrador").getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + nombreBusqueda + "%"); // búsqueda parcial, case sensitive depende de BD
 

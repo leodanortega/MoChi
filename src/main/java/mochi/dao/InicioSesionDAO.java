@@ -14,7 +14,7 @@ public class InicioSesionDAO {
 
     public static Usuario verificarCredenciales(Connection conexion, String username, String password) throws SQLException {
         Usuario usuarioSesion = null;
-        Connection conexionBD = Conexion.getConexion().getConnection();
+        Connection conexionBD = Conexion.getConexion("administrador").getConnection();
         if (conexionBD != null) {
             String consulta = "SELECT idUsuario, nombre, apellidoPaterno, apellidoMaterno, usuario, tipo " +
                     "FROM usuario WHERE usuario = ? AND password = ?";
@@ -49,7 +49,7 @@ public class InicioSesionDAO {
         List<Usuario> usuarios = new ArrayList<>();
         String query = "SELECT idUsuario, nombre, apellidoPaterno, apellidoMaterno, usuario, password, tipo FROM usuario";
 
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -77,7 +77,7 @@ public class InicioSesionDAO {
         String query = "INSERT INTO usuario (nombre, apellidoPaterno, apellidoMaterno, usuario, password, tipo) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = Conexion.getConexion().getConnection();
+        try (Connection conn = Conexion.getConexion("administrador").getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, usuario.getNombre());

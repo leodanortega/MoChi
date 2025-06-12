@@ -16,7 +16,7 @@ public class PromocionDAO {
         Optional<Promocion> promocion = Optional.empty();
         String sql = "SELECT * FROM promocion WHERE Cliente_idCliente = ? AND Producto_idProducto = ? AND CURDATE() BETWEEN Fecha_Inicio AND Fecha_Fin";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
 
             stmt.setInt(1, idCliente);
@@ -47,7 +47,7 @@ public class PromocionDAO {
     List<Promocion> promocionesActivas = new ArrayList<>();
     String sql = "SELECT * FROM promocion WHERE CURDATE() BETWEEN Fecha_Inicio AND Fecha_Fin";
 
-    try (Connection con = Conexion.getConexion().getConnection();
+    try (Connection con = Conexion.getConexion("administrador").getConnection();
          PreparedStatement stmt = con.prepareStatement(sql);
          ResultSet rs = stmt.executeQuery()) {
 
