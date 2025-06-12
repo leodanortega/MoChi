@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import mochi.modelo.pojo.Usuario;
@@ -20,6 +21,20 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private Label lblNombreUsuario;
+    @FXML
+    private Button btnGestionProveedores;
+    @FXML
+    private Button btnGestionPedidos;
+    @FXML
+    private Button btnGestionPromociones;
+    @FXML
+    private Button btnRegistroCompras;
+    @FXML
+    private Button btnGestionPersonal;
+    @FXML
+    private Button btnVerReportes;
+     @FXML
+    private Button btnGestionVentas;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,5 +108,10 @@ public class FXMLPrincipalAdminController implements Initializable {
             e.printStackTrace();
             System.err.println("No se pudo abrir la ventana: " + rutaFXML);
         }
+    }
+
+    @FXML
+    private void btnGestionVentas(ActionEvent event) {
+        abrirNuevaVentana("/vista/FXMLGestionVentas.fxml", "Visualización de Reportes");
     }
 }
