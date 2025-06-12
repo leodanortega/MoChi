@@ -344,7 +344,7 @@ public class FXMLVentaController {
 
     DetalleventaDAO.registrarDetalle(detalles);
 
-    mostrarAlerta(Alert.AlertType.INFORMATION, "Venta registrada", "La venta se registró correctamente con ID: " + idVenta);
+    mostrarAlerta(Alert.AlertType.INFORMATION, "Venta registrada", "La venta se registró correctamente");
 
     limpiarTablaVenta();
     actualizarTotalVenta();

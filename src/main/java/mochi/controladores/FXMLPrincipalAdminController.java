@@ -93,7 +93,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @FXML
     private void btnVerReportes(ActionEvent event) {
-        abrirNuevaVentana("/mochi/vista/FXMLReportes.fxml", "Visualización de Reportes");
+        abrirNuevaVentana("/vista/FXMLprueba.fxml", "Visualización de Reportes");
     }
 
     private void abrirNuevaVentana(String rutaFXML, String titulo) {

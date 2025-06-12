@@ -27,7 +27,7 @@ public class DetalleVentaDAO {
     CallableStatement cs = null;
 
     try {
-        con = Conexion.getConexion("adminstrador").getConnection();
+        con = Conexion.getConexion("administrador").getConnection();
 
         // Opcional: puedes dejar autocommit en true porque el procedimiento maneja la transacción
         // con.setAutoCommit(false);
