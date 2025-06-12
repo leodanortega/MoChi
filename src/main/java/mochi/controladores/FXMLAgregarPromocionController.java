@@ -79,6 +79,7 @@ public class FXMLAgregarPromocionController implements Initializable {
         String prod = cbProducto.getValue();
         LocalDate fi = dpFechaInicio.getValue();
         LocalDate ff = dpFechaFin.getValue();
+        int valor = spValorModificador.getValue();
 
         if (cli == null || cli.trim().isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Debe seleccionar un cliente.");
@@ -97,9 +98,13 @@ public class FXMLAgregarPromocionController implements Initializable {
             return;
         }
 
+        if (valor <= 0 || valor > 100) {
+            showAlert(Alert.AlertType.WARNING, "Solo puede ingresar valores entre 1 y 100");
+            return;
+        }
+
         int idCliente = Integer.parseInt(cli.split(" - ")[0]);
         int idProducto = Integer.parseInt(prod.split(" - ")[0]);
-        int valor = spValorModificador.getValue();
         Date fechaIni = Date.valueOf(fi);
         Date fechaFn  = Date.valueOf(ff);
 
