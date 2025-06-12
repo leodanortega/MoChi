@@ -45,7 +45,6 @@ public class FXMLGestionPedidosController {
     private ObservableList<Producto> productos;
     private ProductoDAO productoDAO;
 
-    @FXML
     public void initialize() {
         productoDAO = new ProductoDAO();
         configurarTabla();

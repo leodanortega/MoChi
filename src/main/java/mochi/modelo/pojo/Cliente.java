@@ -78,4 +78,10 @@ public class Cliente {
     public void setFactura(boolean factura) {
         this.factura = factura;
     }
+    
+    @Override
+public String toString() {
+    return nombre; // Esto ayuda si no usas StringConverter
+}
+
 }

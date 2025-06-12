@@ -29,7 +29,7 @@ public class PromocionDAO {
                         rs.getInt("idPromocion"),
                         rs.getInt("Cliente_idCliente"),
                         rs.getInt("Producto_idProducto"),
-                        rs.getDouble("Valor"), // si en BD se llama Valor o Modificador, usa el correcto
+                        rs.getDouble("Valor/Modificador"), 
                         rs.getDate("Fecha_Inicio").toLocalDate(),
                         rs.getDate("Fecha_Fin").toLocalDate()
                 );
@@ -42,5 +42,33 @@ public class PromocionDAO {
 
         return promocion;
     }
+    
+    public static List<Promocion> obtenerPromocionesActivasHoy() {
+    List<Promocion> promocionesActivas = new ArrayList<>();
+    String sql = "SELECT * FROM promocion WHERE CURDATE() BETWEEN Fecha_Inicio AND Fecha_Fin";
+
+    try (Connection con = Conexion.getConexion().getConnection();
+         PreparedStatement stmt = con.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Promocion promo = new Promocion(
+                    rs.getInt("idPromocion"),
+                    rs.getInt("Cliente_idCliente"),
+                    rs.getInt("Producto_idProducto"),
+                    rs.getDouble("Valor/Modificador"), // Asegúrate que el nombre de la columna en la BD sea "Valor"
+                    rs.getDate("Fecha_Inicio").toLocalDate(),
+                    rs.getDate("Fecha_Fin").toLocalDate()
+            );
+            promocionesActivas.add(promo);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Error al obtener promociones activas: " + e.getMessage());
+    }
+
+    return promocionesActivas;
+}
+
 
 }

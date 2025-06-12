@@ -58,7 +58,7 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
 
     @FXML
     private void btnRealizarVentas(ActionEvent event) {
-        abrirNuevaVentana("/vista/FXMLHacerVenta.fxml", "Realizar Venta");
+        abrirNuevaVentana("/vista/FXMLVenta.fxml", "Realizar Venta");
     }
 
     @FXML
