@@ -11,21 +11,6 @@ public class Conexion {
     private Connection conn;
     private static Conexion instancia;
 
-<<<<<<< Updated upstream
-=======
-    private static Conexion instancia;  // singleton
-
-    // Constructor privado para evitar instancias externas
-    private Conexion() {
-        this.host = "localhost:3306";
-        this.db = "mydb";
-        this.username = "root";
-        this.password = "12399";
-        conectar();
-    }
-
-    // Constructor privado con parámetros
->>>>>>> Stashed changes
     private Conexion(String host, String db, String username, String password) {
         conectar(host, db, username, password);
     }

@@ -41,7 +41,7 @@ public class VentaDAO {
         List<Venta> ventas = new ArrayList<>();
         String sql = "SELECT idVenta, Cliente_idCliente, Total, fecha FROM venta";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -66,7 +66,7 @@ public class VentaDAO {
         List<DetalleVenta> detalles = new ArrayList<>();
         String sql = "SELECT Producto_idProducto, Venta_idVenta, Cantidad_Producto, Total_Producto FROM detalle_venta WHERE Venta_idVenta = ?";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, idVenta);

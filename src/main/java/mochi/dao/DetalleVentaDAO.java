@@ -27,7 +27,7 @@ public class DetalleVentaDAO {
     CallableStatement cs = null;
 
     try {
-        con = Conexion.getConexion().getConnection();
+        con = Conexion.getConexion("adminstrador").getConnection();
 
         // Opcional: puedes dejar autocommit en true porque el procedimiento maneja la transacción
         // con.setAutoCommit(false);
@@ -68,7 +68,7 @@ public class DetalleVentaDAO {
         List<DetalleVenta> detalles = new ArrayList<>();
         String sql = "SELECT Producto_idProducto, Venta_idVenta, Cantidad_Producto, Total_Producto FROM detalle_venta WHERE Venta_idVenta = ?";
 
-        try (Connection con = Conexion.getConexion().getConnection();
+        try (Connection con = Conexion.getConexion("administrador").getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, idVenta);
