@@ -24,14 +24,14 @@
         <VBox alignment="TOP_LEFT" spacing="15" style="-fx-background-color: #ecf0f1; -fx-padding: 25 25 25 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.2, 1, 1);">
             <children>
                 <Label style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Opciones del sistema" />
-                <Label fx:id="lblNombreUsuario" layoutX="20.0" layoutY="20.0" text="Usuario: " style="-fx-font-size: 14px;" />
+                <Label fx:id="lblNombreUsuario" layoutX="20.0" layoutY="20.0" style="-fx-font-size: 14px;" text="Usuario: " />
                 <Button fx:id="btnGestionProveedores" onAction="#btnGestionProveedores" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📦 Gestión de Proveedores" />
 
                 <Button fx:id="btnGestionPedidos" onAction="#btnGestionPedidos" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📝 Pedidos a Proveedores" />
 
-                <Button fx:id="btnGestionPromociones" onAction="#btnGestionPromociones" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🏷 Gestión de Promociones" />
-
                 <Button fx:id="btnRegistroCompras" onAction="#btnRegistroCompras" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🛍 Registro de Compras" />
+
+                <Button fx:id="btnGestionPromociones" onAction="#btnGestionPromociones" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🏷 Gestión de Promociones" />
 
                 <Button fx:id="btnGestionPersonal" onAction="#btnGestionPersonal" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="👥 Gestión de Personal" />
 
