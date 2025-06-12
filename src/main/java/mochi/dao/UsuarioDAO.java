@@ -2,7 +2,7 @@ package mochi.dao;
 
 import mochi.conexionbd.Conexion;
 import mochi.modelo.pojo.Usuario;
-
+import mochi.util.CifradorSHA512;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class UsuarioDAO {
             ps.setString(2, u.getApellidoPaterno());
             ps.setString(3, u.getApellidoMaterno());
             ps.setString(4, u.getUsername());
-            ps.setString(5, u.getPassword());
+            ps.setString(5, CifradorSHA512.encriptar(u.getPassword()));
             ps.setInt(6, u.getTipo());
 
             int filas = ps.executeUpdate();
@@ -90,7 +90,7 @@ public class UsuarioDAO {
             ps.setString(2, u.getApellidoPaterno());
             ps.setString(3, u.getApellidoMaterno());
             ps.setString(4, u.getUsername());
-            ps.setString(5, u.getPassword());
+            ps.setString(5, CifradorSHA512.encriptar(u.getPassword()));
             ps.setInt(6, u.getTipo());
             ps.setInt(7, u.getIdUsuario());
 

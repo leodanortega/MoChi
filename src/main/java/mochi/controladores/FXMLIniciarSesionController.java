@@ -36,7 +36,7 @@ public class FXMLIniciarSesionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        // Ya no se abre conexión aquí
     }
 
     @FXML

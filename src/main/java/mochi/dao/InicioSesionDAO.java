@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mochi.modelo.pojo.Usuario;
 import mochi.conexionbd.Conexion; // Import correcto para tu clase de conexión
+import mochi.util.CifradorSHA512;
 
 public class InicioSesionDAO {
 
@@ -20,7 +21,7 @@ public class InicioSesionDAO {
                     "FROM usuario WHERE usuario = ? AND password = ?";
             PreparedStatement sentencia = conexionBD.prepareStatement(consulta);
             sentencia.setString(1, username);
-            sentencia.setString(2, password);
+            sentencia.setString(2, CifradorSHA512.encriptar(password));
             ResultSet resultado = sentencia.executeQuery();
             if (resultado.next()) {
                 usuarioSesion = convertirRegistroUsuario(resultado);
@@ -84,7 +85,7 @@ public class InicioSesionDAO {
             pstmt.setString(2, usuario.getApellidoPaterno());
             pstmt.setString(3, usuario.getApellidoMaterno());
             pstmt.setString(4, usuario.getUsername());
-            pstmt.setString(5, usuario.getPassword());
+            pstmt.setString(5, CifradorSHA512.encriptar(usuario.getPassword()));
             pstmt.setInt(6, usuario.getTipo());
 
             int filasAfectadas = pstmt.executeUpdate();
