@@ -1,61 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="730.0" prefWidth="717.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLGestionVentasController">
-   <children>
-      <!-- Título -->
-      <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0"
-             style="-fx-font-size: 20px;" text="Gestión de Ventas" />
+<AnchorPane prefHeight="730.0" prefWidth="717.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLGestionVentasController">
 
-      <!-- Filtros -->
-      <TextField fx:id="campoBusquedaNombre" layoutX="14.0" layoutY="68.0"
-                 prefHeight="26.0" prefWidth="294.0" promptText="Buscar por nombre" />
-      <DatePicker fx:id="fechaInicioPicker" layoutX="316.0" layoutY="68.0"
-                  prefHeight="26.0" prefWidth="130.0" promptText="Fecha inicio" />
-      <DatePicker fx:id="fechaFinPicker" layoutX="456.0" layoutY="68.0"
-                  prefHeight="26.0" prefWidth="130.0" promptText="Fecha fin" />
+    <!-- Título -->
+    <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="💰 Gestión de Ventas" />
 
-      <!-- Tabla de Ventas -->
-      <TableView fx:id="tablaVentas" layoutX="14.0" layoutY="117.0"
-                 prefHeight="200.0" prefWidth="550.0">
-         <columns>
-            <TableColumn fx:id="colIdVenta"   prefWidth="100.0" text="NumeroVenta" />
-            <TableColumn fx:id="colFecha"     prefWidth="150.0" text="Fecha" />
-            <TableColumn fx:id="colCliente"   prefWidth="200.0" text="Cliente" />
-            <TableColumn fx:id="colTotal"     prefWidth="100.0" text="Total" />
-         </columns>
-      </TableView>
-      <!-- Label Total Ventas -->
-      <Label fx:id="lblTotalVentas" layoutX="14.0" layoutY="322.0" prefHeight="24.0" prefWidth="200.0" text="Total Ventas: $0.00" />
+    <!-- Filtros -->
+    <TextField fx:id="campoBusquedaNombre" layoutX="14.0" layoutY="68.0" prefHeight="30.0" prefWidth="294.0" promptText="Buscar por nombre" style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
+    <DatePicker fx:id="fechaInicioPicker" layoutX="316.0" layoutY="68.0" prefHeight="30.0" prefWidth="130.0" promptText="Fecha inicio" style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
+    <DatePicker fx:id="fechaFinPicker" layoutX="456.0" layoutY="68.0" prefHeight="30.0" prefWidth="130.0" promptText="Fecha fin" style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
 
-      <!-- Tabla de DetalleVenta -->
-      <TableView fx:id="tabladetallesventa" layoutX="20.0" layoutY="360.0"
-                 prefHeight="274.0" prefWidth="550.0">
+    <!-- Tabla de Ventas -->
+    <TableView fx:id="tablaVentas" layoutX="14.0" layoutY="117.0" prefHeight="200.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">
         <columns>
-            <TableColumn fx:id="colIdVentad"  prefWidth="75.0" text="NumeroVenta" />
-            <TableColumn fx:id="colCliented"  prefWidth="75.0" text="Cliente" />
-            <TableColumn fx:id="colProducto"  prefWidth="75.0" text="Producto" />
-            <TableColumn fx:id="colCantidad"  prefWidth="75.0" text="Cantidad" />
-            <TableColumn fx:id="colPrecio"    prefWidth="75.0" text="Precio" />
-            <TableColumn fx:id="colSubTotal"  prefWidth="75.0" text="SubTotal" />
+            <TableColumn fx:id="colIdVenta" prefWidth="100.0" text="Número Venta" />
+            <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha" />
+            <TableColumn fx:id="colCliente" prefWidth="200.0" text="Cliente" />
+            <TableColumn fx:id="colTotal" prefWidth="100.0" text="Total" />
         </columns>
-      </TableView>
-      <!-- Label Total Detalle -->
-      <Label fx:id="lblTotalDetalle" layoutX="20.0" layoutY="644.0" prefHeight="24.0" prefWidth="200.0" text="Total Detalle: $0.00" />
+    </TableView>
 
-      <!-- Botón Regresar -->
-      <Button fx:id="btnRegresar" layoutX="640.0" layoutY="655.0"
-              mnemonicParsing="false" onAction="#btnRegresar"
-              text="Regresar" />
-   </children>
+    <!-- Label Total Ventas -->
+    <Label fx:id="lblTotalVentas" layoutX="14.0" layoutY="322.0" prefHeight="24.0" prefWidth="200.0" style="-fx-font-weight: bold; -fx-text-fill: #333; -fx-font-size: 16px;" text="Total Ventas: $0.00" />
+
+    <!-- Tabla de DetalleVenta -->
+    <TableView fx:id="tabladetallesventa" layoutX="20.0" layoutY="360.0" prefHeight="274.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">
+        <columns>
+            <TableColumn fx:id="colIdVentad" prefWidth="75.0" text="Número Venta" />
+            <TableColumn fx:id="colCliented" prefWidth="75.0" text="Cliente" />
+            <TableColumn fx:id="colProducto" prefWidth="75.0" text="Producto" />
+            <TableColumn fx:id="colCantidad" prefWidth="75.0" text="Cantidad" />
+            <TableColumn fx:id="colPrecio" prefWidth="75.0" text="Precio" />
+            <TableColumn fx:id="colSubTotal" prefWidth="75.0" text="SubTotal" />
+        </columns>
+    </TableView>
+
+    <!-- Label Total Detalle -->
+    <Label fx:id="lblTotalDetalle" layoutX="20.0" layoutY="644.0" prefHeight="24.0" prefWidth="200.0" style="-fx-font-weight: bold; -fx-text-fill: #333; -fx-font-size: 16px;" text="Total Detalle: $0.00" />
+
+    <!-- Botón Regresar -->
+    <Button fx:id="btnRegresar" layoutX="594.0" layoutY="657.0" mnemonicParsing="false" onAction="#btnRegresar" prefHeight="35" prefWidth="95.0" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔙 Regresar" />
 </AnchorPane>
