@@ -87,9 +87,20 @@ public class FXMLGestionComprasController {
 
     @FXML
     public void registrarEntradas(ActionEvent event) {
+        Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+
+        if (productoSeleccionado == null) {
+            mostrarAlerta("Selección requerida", "Por favor, selecciona un producto de la tabla.");
+            return;
+        }
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioEntradasProducto.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioRegistrarEntradasProducto.fxml"));
             Parent root = loader.load();
+
+            // Pasar el producto seleccionado al controlador del formulario
+            mochi.controladores.FXMLFormularioRegistrarEntradasProductoController controller = loader.getController();
+            controller.inicializarProducto(productoSeleccionado);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -103,6 +114,7 @@ public class FXMLGestionComprasController {
             mostrarAlerta("Error", "No se pudo abrir el formulario de entradas.");
         }
     }
+
 
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
