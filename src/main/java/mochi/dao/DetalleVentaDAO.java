@@ -4,6 +4,7 @@
  */
 package mochi.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,25 +18,49 @@ import mochi.modelo.pojo.DetalleVenta;
  */
 // DetalleVentaDAO.java
 public class DetalleVentaDAO {
-    public void registrarDetalle(List<DetalleVenta> detalles) {
-        String sql = "INSERT INTO detalle_venta(Producto_idProducto, Venta_idVenta, Cantidad_Producto, Total_Producto) VALUES (?, ?, ?, ?)";
+  public void registrarDetalle(List<DetalleVenta> detalles) {
+    String sql = "{CALL sp_realizar_detalle_venta(?, ?, ?, ?)}";
 
-        try (Connection con = Conexion.getConexion("administrador").getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+    Connection con = null;
+    CallableStatement cs = null;
 
-            for (DetalleVenta d : detalles) {
-                ps.setInt(1, d.getIdProducto());
-                ps.setInt(2, d.getIdVenta());
-                ps.setDouble(3, d.getTotalProducto());
-                ps.setDouble(4, d.getTotalProducto());
-                ps.addBatch();
+    try {
+        con = Conexion.getConexion().getConnection();
+
+        // Opcional: puedes dejar autocommit en true porque el procedimiento maneja la transacción
+        // con.setAutoCommit(false);
+
+        cs = con.prepareCall(sql);
+
+        for (DetalleVenta d : detalles) {
+            cs.setInt(1, d.getIdProducto());
+            cs.setInt(2, d.getIdVenta());
+            cs.setInt(3, d.getCantidadProducto());
+            cs.setDouble(4, d.getTotalProducto());
+
+            cs.execute();
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Aquí puedes hacer manejo adicional si quieres
+    } finally {
+        if (cs != null) {
+            try {
+                cs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
-            ps.executeBatch();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+}
+
 }
 

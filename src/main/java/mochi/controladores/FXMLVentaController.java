@@ -155,7 +155,7 @@ public class FXMLVentaController {
         clientes = clienteDAO.listar();
 
         Cliente clienteSinCuenta = new Cliente();
-        clienteSinCuenta.setIdCliente(-1);
+        clienteSinCuenta.setIdCliente(8);
         clienteSinCuenta.setNombre("Venta a cliente sin cuenta");
 
         cbCliente.getItems().clear();
