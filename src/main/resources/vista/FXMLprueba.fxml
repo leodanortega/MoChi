@@ -4,13 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLpruebaController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLpruebaController">
    <children>
-      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="361.0" prefWidth="569.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="361.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Productos Vendidos">
                <content>
-                  <TableView fx:id="tvProductosVenta" prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="tvProductosVenta" prefHeight="322.0" prefWidth="707.0">
                     <columns>
                       <TableColumn fx:id="productoNombre" prefWidth="272.0" text="Producto" />
                       <TableColumn fx:id="cantidadVendida" prefWidth="297.0" text="Cantidad" />

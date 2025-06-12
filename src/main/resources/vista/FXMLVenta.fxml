@@ -28,7 +28,7 @@
                <TableColumn fx:id="colCosto" prefWidth="70" text="Costo" />
                <TableColumn fx:id="colCantidadActual" prefWidth="90" text="Cantidad Actual" />
                <TableColumn fx:id="colCantidadEditable" prefWidth="60" text="Cantidad" />
-               <TableColumn fx:id="colValorModificador" prefWidth="80" text="Promoción" />
+               <TableColumn fx:id="colValorModificador" prefWidth="80" text="Modificador" />
                <TableColumn fx:id="colSubtotal" prefWidth="110" text="Subtotal" />
            </columns>
        </TableView>

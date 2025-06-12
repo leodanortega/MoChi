@@ -174,6 +174,9 @@ public class FXMLVentaController {
         System.out.println("Promociones activas cargadas: " + promocionesActivasHoy.size());
 
         for (Promocion promo : promocionesActivasHoy) {
+           double valor = ((-promo.getValorModificador()/100)+1);
+           promo.setValorModificador(valor);
+
             System.out.println("→ ID Promoción: " + promo.getIdPromocion() +
                                ", Cliente ID: " + promo.getIdCliente() +
                                ", Producto ID: " + promo.getIdProducto() +

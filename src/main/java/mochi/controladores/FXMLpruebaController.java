@@ -2,6 +2,7 @@ package mochi.controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,8 @@ public class FXMLpruebaController implements Initializable {
     private TableColumn<ProductoVenta, String> productoNombre;
     @FXML
     private TableColumn<ProductoVenta, Integer> cantidadVendida;
+    @FXML
+    private TabPane tabPane;
 
     // TAB 2: Clientes con productos
     @FXML
@@ -106,4 +109,6 @@ public class FXMLpruebaController implements Initializable {
         Stage stage = (Stage) tvProductosVenta.getScene().getWindow();
         stage.close();
     }
+
+
 }
