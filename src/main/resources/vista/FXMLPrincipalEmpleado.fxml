@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,43 +7,38 @@
 
     <!-- Barra superior -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #f0f0f0;">
-            <padding>
-                <Insets bottom="10" left="20" right="20" top="10" />
-            </padding>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 12 20 12 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.3, 0, 2);">
             <children>
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="MoChi" />
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="🛒 MoChi - Panel Empleado" />
                 <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER_RIGHT">
                     <children>
-                        <Label fx:id="lblNombreUsuario" style="-fx-font-size: 14px;" text="Bienvenido: Empleado" />
-                        <Button onAction="#btnCerrarSesion" text="Cerrar Sesión" />
+                        <Button onAction="#btnCerrarSesion" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 6 12;" text="Cerrar Sesión" />
                     </children>
                 </HBox>
             </children>
         </HBox>
     </top>
 
-    <!-- Contenido principal con botones -->
-    <center>
-        <GridPane alignment="CENTER" hgap="20" vgap="20">
-            <padding>
-                <Insets bottom="20" left="20" right="20" top="20" />
-            </padding>
+    <!-- Menú lateral izquierdo -->
+    <left>
+        <VBox alignment="TOP_LEFT" spacing="15" style="-fx-background-color: #ecf0f1; -fx-padding: 25 25 25 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.2, 1, 1);">
             <children>
-                <Button fx:id="btnGestionClientes" onAction="#btnGestionClientes" text="Gestión de Clientes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Button fx:id="btnRealizarVentas" onAction="#btnRealizarVentas" text="Realizar Ventas" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button fx:id="btnGestionProductos" onAction="#btnGestionProductos" text="Gestión de Productos" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Button fx:id="btnGestionPromociones" mnemonicParsing="false" onAction="#btnGestionPromociones" text="Gestión de Promociones" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Opciones del sistema" />
+
+                <Button fx:id="btnGestionClientes" onAction="#btnGestionClientes" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="👥 Gestión de Clientes" />
+
+                <Button fx:id="btnRealizarVentas" onAction="#btnRealizarVentas" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="💰 Realizar Ventas" />
+
+                <Button fx:id="btnGestionProductos" onAction="#btnGestionProductos" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📦 Gestión de Productos" />
+
+                <Button fx:id="btnGestionPromociones" onAction="#btnGestionPromociones" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🏷 Gestión de Promociones" />
             </children>
-            <columnConstraints>
-                <ColumnConstraints />
-                <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints />
-                <RowConstraints />
-            </rowConstraints>
-        </GridPane>
+        </VBox>
+    </left>
+
+    <!-- Centro con mensaje inicial -->
+    <center>
+        <Label style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;" text="Seleccione una opción del menú para comenzar" BorderPane.alignment="CENTER" />
     </center>
 
 </BorderPane>

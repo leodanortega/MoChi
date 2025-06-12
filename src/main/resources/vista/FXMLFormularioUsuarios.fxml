@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="280.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLFormularioUsuariosController">
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f7f9fa; -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLFormularioUsuariosController">
 
     <children>
-        <Label layoutX="20" layoutY="20" text="Nombre:" />
-        <TextField fx:id="tfNombre" layoutX="150" layoutY="16" prefWidth="220"
-                   promptText="Nombre" />
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="👤 Registrar Usuario" />
 
-        <Label layoutX="20" layoutY="60" text="Apellido Paterno:" />
-        <TextField fx:id="tfApellidoPaterno" layoutX="150" layoutY="56" prefWidth="220"
-                   promptText="Apellido Paterno" />
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="130" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
 
-        <Label layoutX="20" layoutY="100" text="Apellido Materno:" />
-        <TextField fx:id="tfApellidoMaterno" layoutX="150" layoutY="96" prefWidth="220"
-                   promptText="Apellido Materno" />
+            <children>
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="tfNombre" prefWidth="230" promptText="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Label layoutX="20" layoutY="140" text="Usuario:" />
-        <TextField fx:id="tfUsername" layoutX="150" layoutY="136" prefWidth="220"
-                   promptText="Nombre de usuario" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Apellido Paterno:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="tfApellidoPaterno" prefWidth="230" promptText="Apellido Paterno" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <Label layoutX="20" layoutY="180" text="Contraseña:" />
-        <PasswordField fx:id="pfPassword" layoutX="150" layoutY="176" prefWidth="220"
-                       promptText="Contraseña" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Apellido Materno:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="tfApellidoMaterno" prefWidth="230" promptText="Apellido Materno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <Label layoutX="20" layoutY="220" text="Tipo de usuario:" />
-        <ComboBox fx:id="cbTipo" layoutX="150" layoutY="216" prefWidth="220"
-                  promptText="Selecciona tipo" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="tfUsername" prefWidth="230" promptText="Nombre de usuario" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-        <Button fx:id="btnGuardar" layoutX="150" layoutY="260" prefWidth="100"
-                onAction="#guardarUsuario" text="Guardar" />
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <PasswordField fx:id="pfPassword" prefWidth="230" promptText="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Tipo de usuario:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <ComboBox fx:id="cbTipo" prefWidth="230" promptText="Selecciona tipo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="btnGuardar" onAction="#guardarUsuario" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 40; -fx-background-radius: 6;" text="Guardar" />
     </children>
-</AnchorPane>
+</VBox>

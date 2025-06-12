@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLFormularioRegistrarEntradasProductoController"
-            prefHeight="250.0" prefWidth="400.0">
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="mochi.controladores.FXMLFormularioRegistrarEntradasProductoController"
+      spacing="25" alignment="TOP_CENTER"
+      style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
 
     <children>
-        <Label layoutX="30" layoutY="30" text="Nombre del producto:" />
-        <Label fx:id="lblNombreProducto" layoutX="170" layoutY="30" text="-" />
+        <Label text="📦 Registrar Entrada de Producto"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" />
 
-        <Label layoutX="30" layoutY="70" text="Presentación:" />
-        <Label fx:id="lblPresentacionProducto" layoutX="170" layoutY="70" text="-" />
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
 
-        <Label layoutX="30" layoutY="110" text="Cantidad recibida:" />
-        <TextField fx:id="tfCantidadRecibida" layoutX="170" layoutY="106" prefWidth="150"
-                   promptText="Ej. 20" />
+            <children>
+                <Label text="Nombre del producto:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="lblNombreProducto" text="-" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Button fx:id="btnGuardar" layoutX="90" layoutY="170" prefWidth="100"
-                text="Guardar" onAction="#guardarEntrada" />
+                <Label text="Presentación:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="lblPresentacionProducto" text="-" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <Button fx:id="btnCancelar" layoutX="210" layoutY="170" prefWidth="100"
-                text="Cancelar" onAction="#cancelar" />
+                <Label text="Cantidad recibida:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="tfCantidadRecibida" promptText="Ej. 20" prefWidth="180" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+
+        <HBox spacing="30" alignment="CENTER">
+            <Button fx:id="btnGuardar" text="💾 Guardar" onAction="#guardarEntrada"
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" />
+            <Button fx:id="btnCancelar" text="✖ Cancelar" onAction="#cancelar"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" />
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>
+

@@ -1,61 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLPrincipalAdminController">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLPrincipalAdminController">
 
     <!-- Barra superior -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #f0f0f0;">
-            <padding>
-                <Insets bottom="10" left="20" right="20" top="10" />
-            </padding>
-           <children>
-               <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="MoChi" />
-               <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER_RIGHT">
-                  <children>
-                      <Label fx:id="lblNombreUsuario" style="-fx-font-size: 14px;" text="Bienvenido: Admin" />
-                      <Button onAction="#btnCerrarSesion" text="Cerrar Sesión" />
-                  </children>
-               </HBox>
-           </children>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 12 20 12 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.3, 0, 2);">
+            <children>
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="🛒 MoChi - Panel Administrativo" />
+                <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER_RIGHT">
+                    <children>
+                        <Button onAction="#btnCerrarSesion" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;                                        -fx-background-radius: 5; -fx-padding: 6 12;" text="Cerrar Sesión" />
+                    </children>
+                </HBox>
+            </children>
         </HBox>
     </top>
 
-    <!-- Contenido principal con botones -->
+    <!-- Menú lateral izquierdo -->
+    <left>
+        <VBox alignment="TOP_LEFT" spacing="15" style="-fx-background-color: #ecf0f1; -fx-padding: 25 25 25 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.2, 1, 1);">
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Opciones del sistema" />
+
+                <Button fx:id="btnGestionProveedores" onAction="#btnGestionProveedores" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📦 Gestión de Proveedores" />
+
+                <Button fx:id="btnGestionPedidos" onAction="#btnGestionPedidos" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📝 Pedidos a Proveedores" />
+
+                <Button fx:id="btnGestionPromociones" onAction="#btnGestionPromociones" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🏷 Gestión de Promociones" />
+
+                <Button fx:id="btnRegistroCompras" onAction="#btnRegistroCompras" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="🛍 Registro de Compras" />
+
+                <Button fx:id="btnGestionPersonal" onAction="#btnGestionPersonal" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="👥 Gestión de Personal" />
+
+                <Button fx:id="btnVerReportes" onAction="#btnVerReportes" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="📊 Ver Reportes" />
+
+                <Button fx:id="btnGestionVentas" onAction="#btnGestionVentas" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="💰 Gestión de Ventas" />
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Centro vacío o mensaje inicial -->
     <center>
-        <GridPane alignment="CENTER" hgap="20" vgap="20">
-            <padding>
-                <Insets bottom="20" left="20" right="20" top="20" />
-            </padding>
-           <children>
-   
-               <Button fx:id="btnGestionProveedores" onAction="#btnGestionProveedores" text="Gestión de Proveedores" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-               <Button fx:id="btnGestionPedidos" onAction="#btnGestionPedidos" text="Gestión de Pedidos a Proveedores" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-               <Button fx:id="btnGestionPromociones" onAction="#btnGestionPromociones" text="Gestión de Promociones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-               <Button fx:id="btnRegistroCompras" onAction="#btnRegistroCompras" text="Registro de Compras" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Button fx:id="btnGestionPersonal" onAction="#btnGestionPersonal" text="Gestión de Personal" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-               <Button fx:id="btnVerReportes" onAction="#btnVerReportes" text="Visualización de Reportes" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#btnGestionVentas" prefHeight="26.0" prefWidth="119.0" text="Gestion de Ventas" GridPane.rowIndex="3" />
-           </children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" />
-         </rowConstraints>
-        </GridPane>
+        <Label style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;" text="Seleccione una opción del menú para comenzar" BorderPane.alignment="CENTER" />
     </center>
 
 </BorderPane>

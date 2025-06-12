@@ -1,89 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" prefHeight="350.0" prefWidth="500.0" spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="mochi.controladores.FXMLAgregarPromocionController">
-<children>
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #ecf0f1; -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLAgregarPromocionController">
 
-    <Label style="-fx-font-weight: bold;" text="Agregar Nueva Promoción">
-        <font>
-            <Font size="20.0" />
-        </font>
-    </Label>
+    <children>
 
-    <GridPane hgap="10" vgap="10">
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" />
-            <ColumnConstraints hgrow="ALWAYS" />
-        </columnConstraints>
-        <children>
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="🏷 Registrar Promoción" />
 
-            <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <ComboBox fx:id="cbCliente" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+            <children>
 
-            <Label text="Producto:" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <ComboBox fx:id="cbProducto" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label style="-fx-font-size: 16px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="cbCliente" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label text="Descuento:" textAlignment="RIGHT" GridPane.rowIndex="2">
-                <font>
-                    <Font size="16.0" />
-                </font>
-                <padding>
-                    <Insets left="60.0" />
-                </padding>
-            </Label>
-            <Spinner fx:id="spValorModificador" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label style="-fx-font-size: 16px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Producto:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="cbProducto" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label text="Fecha Inicio:" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <DatePicker fx:id="dpFechaInicio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label style="-fx-font-size: 16px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Descuento:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Spinner fx:id="spValorModificador" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label text="Fecha Fin:" GridPane.columnIndex="0" GridPane.rowIndex="4">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <DatePicker fx:id="dpFechaFin" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        </children>
-        <rowConstraints>
+                <Label style="-fx-font-size: 16px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Fecha Inicio:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <DatePicker fx:id="dpFechaInicio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label style="-fx-font-size: 16px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Fecha Fin:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <DatePicker fx:id="dpFechaFin" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            </children>
+         <rowConstraints>
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
-        </rowConstraints>
-    </GridPane>
+         </rowConstraints>
+        </GridPane>
 
-    <HBox alignment="CENTER" spacing="20">
-        <children>
-            <Button onAction="#btnGuardar" style="-fx-background-color: #33acff;" text="Guardar" textFill="WHITE">
-                <font>
-                    <Font name="System Bold" size="16.0" />
-                </font>
-            </Button>
-            <Button onAction="#btnCancelar" style="-fx-background-color: #33acff;" text="Cancelar" textFill="WHITE">
-                <font>
-                    <Font name="System Bold" size="16.0" />
-                </font>
-            </Button>
-        </children>
-    </HBox>
-</children>
+        <HBox alignment="CENTER" spacing="20">
+            <children>
+                <Button onAction="#btnGuardar" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;                                -fx-font-size: 14px; -fx-padding: 8 16; -fx-background-radius: 8;" text="💾 Guardar" />
+
+                <Button onAction="#btnCancelar" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;                                -fx-font-size: 14px; -fx-padding: 8 16; -fx-background-radius: 8;" text="❌ Cancelar" />
+            </children>
+        </HBox>
+
+    </children>
 </VBox>

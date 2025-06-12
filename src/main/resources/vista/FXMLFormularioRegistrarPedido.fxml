@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="270" prefWidth="400" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLFormularioRegistrarPedidoController">
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="mochi.controladores.FXMLFormularioRegistrarPedidoController"
+      spacing="25" alignment="TOP_CENTER"
+      style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
+
     <children>
+        <Label text="🛒 Realizar pedido"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" />
 
-        <!-- Título -->
-        <Label layoutX="20" layoutY="10" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Realizar pedido" />
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
 
-        <!-- Nombre del producto -->
-        <Label layoutX="20" layoutY="60" text="Producto:" />
-        <Label fx:id="lblNombreProducto" layoutX="100" layoutY="60" style="-fx-font-weight: bold;" />
-
-        <!-- Cantidad a pedir -->
-        <Label layoutX="20" layoutY="100" text="Cantidad:" />
-        <TextField fx:id="txtCantidad" layoutX="116.0" layoutY="96.0" prefWidth="100" />
-
-        <!-- Precio de compra -->
-        <Label layoutX="20" layoutY="140" text="Precio Compra:" />
-        <TextField fx:id="txtPrecioCompra" layoutX="116.0" layoutY="136.0" prefWidth="100" />
-
-        <!-- Selección del proveedor -->
-        <Label layoutX="20" layoutY="180" text="Proveedor:" />
-        <ComboBox fx:id="cmbProveedor" layoutX="116.0" layoutY="176.0" prefWidth="200" />
-
-        <!-- Botones -->
-        <HBox layoutX="185.0" layoutY="220.0" spacing="10">
             <children>
-                <Button onAction="#confirmarPedido" text="Confirmar" />
-            </children>
-        </HBox>
+                <Label text="Producto:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="lblNombreProducto" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
+                <Label text="Cantidad:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="txtCantidad" prefWidth="180" promptText="Ej. 20" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Precio Compra:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="txtPrecioCompra" prefWidth="180" promptText="Ej. 12.50" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Proveedor:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <ComboBox fx:id="cmbProveedor" prefWidth="180" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            </children>
+        </GridPane>
+
+        <HBox spacing="30" alignment="CENTER">
+            <Button text="✅ Confirmar" onAction="#confirmarPedido"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 30; -fx-background-radius: 8;" />
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>
+
