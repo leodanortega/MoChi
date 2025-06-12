@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import mochi.dao.ClienteDAO;
 import mochi.dao.DetalleVentaDAO;
 import mochi.dao.ProductoDAO;
@@ -60,26 +61,26 @@ public class FXMLGestionVentasController implements Initializable {
         listaProductos = new ProductoDAO().listar();
 
         // 2) Configurar columnas de tablaVentas
-        colIdVenta.setCellValueFactory(v -> 
+        colIdVenta.setCellValueFactory(v ->
             new SimpleIntegerProperty(v.getValue().getIdVenta()));
-        colFecha.setCellValueFactory(v -> 
+        colFecha.setCellValueFactory(v ->
             new SimpleStringProperty(v.getValue().getFecha().toString()));
         colCliente.setCellValueFactory(v -> {
             int idC = v.getValue().getIdCliente();
             String nom = "Desconocido";
             for (Cliente c : listaClientes) {
-                if (c.getIdCliente() == idC) { 
-                    nom = c.getNombre(); 
-                    break; 
+                if (c.getIdCliente() == idC) {
+                    nom = c.getNombre();
+                    break;
                 }
             }
             return new SimpleStringProperty(nom);
         });
-        colTotal.setCellValueFactory(v -> 
+        colTotal.setCellValueFactory(v ->
             new SimpleDoubleProperty(v.getValue().getTotal()));
 
         // 3) Configurar columnas de tabladetallesventa
-        colIdVentad.setCellValueFactory(d -> 
+        colIdVentad.setCellValueFactory(d ->
             new SimpleIntegerProperty(d.getValue().getIdVenta()));
         colCliented.setCellValueFactory(d -> {
             int vid = d.getValue().getIdVenta();
@@ -101,21 +102,21 @@ public class FXMLGestionVentasController implements Initializable {
             int pid = d.getValue().getIdProducto();
             String prod = "Desconocido";
             for (Producto p : listaProductos) {
-                if (p.getIdProducto() == pid) { 
-                    prod = p.getNombre(); 
-                    break; 
+                if (p.getIdProducto() == pid) {
+                    prod = p.getNombre();
+                    break;
                 }
             }
             return new SimpleStringProperty(prod);
         });
-        colCantidad.setCellValueFactory(d -> 
+        colCantidad.setCellValueFactory(d ->
             new SimpleIntegerProperty(d.getValue().getCantidadProducto()));
         colPrecio.setCellValueFactory(d -> {
-            double unidad = d.getValue().getTotalProducto() 
+            double unidad = d.getValue().getTotalProducto()
                             / d.getValue().getCantidadProducto();
             return new SimpleDoubleProperty(unidad);
         });
-        colSubTotal.setCellValueFactory(d -> 
+        colSubTotal.setCellValueFactory(d ->
             new SimpleDoubleProperty(d.getValue().getTotalProducto()));
 
         // 4) Cargar ventas iniciales
@@ -128,7 +129,7 @@ public class FXMLGestionVentasController implements Initializable {
 
         // 6) Doble clic para cargar detalles
         tablaVentas.setOnMouseClicked(evt -> {
-            if (evt.getClickCount() == 2 
+            if (evt.getClickCount() == 2
                 && !tablaVentas.getSelectionModel().isEmpty()) {
                 Venta sel = tablaVentas.getSelectionModel()
                                      .getSelectedItem();
@@ -183,11 +184,12 @@ public class FXMLGestionVentasController implements Initializable {
 
     @FXML
     private void btnRegresar(ActionEvent event) {
-        // tu lógica de regreso...
+        Stage stage = (Stage) tabladetallesventa.getScene().getWindow();
+        stage.close();
     }
 
     private void cargarDetalleVenta(Venta venta) {
-        List<DetalleVenta> detalles = 
+        List<DetalleVenta> detalles =
             new DetalleVentaDAO()
                  .obtenerDetallePorVenta(venta.getIdVenta());
         tabladetallesventa.getItems().setAll(detalles);
@@ -196,7 +198,7 @@ public class FXMLGestionVentasController implements Initializable {
 
     private void actualizarTotalDetalle() {
         double total = 0;
-        for (DetalleVenta d : 
+        for (DetalleVenta d :
              tabladetallesventa.getItems()) {
             total += d.getTotalProducto();
         }

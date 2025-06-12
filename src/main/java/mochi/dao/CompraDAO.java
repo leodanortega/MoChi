@@ -26,10 +26,10 @@ public class CompraDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1; // error
+        return -1;
     }
 
-    // Método para agregar detalle (sin cambios)
+
     public boolean agregarDetalle(DetalleCompra detalle) {
         String sql = "INSERT INTO detalle_compra (Compras_idCompras, Producto_idProducto, Cantidad, Precio_Compra) VALUES (?, ?, ?, ?)";
 

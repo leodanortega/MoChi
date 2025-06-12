@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import mochi.modelo.pojo.Usuario;
-import mochi.conexionbd.Conexion; // Import correcto para tu clase de conexión
+import mochi.conexionbd.Conexion;
 import mochi.util.CifradorSHA512;
 
 public class InicioSesionDAO {

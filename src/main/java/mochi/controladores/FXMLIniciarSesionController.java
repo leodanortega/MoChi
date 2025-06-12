@@ -36,7 +36,6 @@ public class FXMLIniciarSesionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Ya no se abre conexión aquí
     }
 
     @FXML
@@ -45,7 +44,6 @@ public class FXMLIniciarSesionController implements Initializable {
         String password = pfContrasena.getText();
 
         if (validarCampos(username, password)) {
-            // Intentamos conexión mínima solo para verificar login
             Connection loginCon = Conexion.getConexion("empleado").getConnection(); // o rol fijo si tienes uno
             if (loginCon == null) {
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de conexión", "No se pudo conectar con la base de datos.");
@@ -55,12 +53,11 @@ public class FXMLIniciarSesionController implements Initializable {
             Usuario usuarioSesion = validarCredenciales(username, password, loginCon);
             if (usuarioSesion != null) {
                 try {
-                    loginCon.close(); // Cerramos la conexión temporal
+                    loginCon.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
-                // Crear la conexión definitiva según el tipo
                 String perfilConexion = (usuarioSesion.getTipo() == 1) ? "administrador" : "empleado";
                 conexion = Conexion.getConexion(perfilConexion).getConnection();
 

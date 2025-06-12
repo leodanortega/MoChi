@@ -38,7 +38,7 @@ public class FXMLPrincipalAdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Nada que hacer por ahora
+
     }
 
     public void setUsuario(Usuario usuario) {

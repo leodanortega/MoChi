@@ -71,6 +71,6 @@ public class Proovedor {
 
     @Override
     public String toString() {
-        return nombre; // Así se verá el nombre en el ComboBox
+        return nombre;
     }
 }

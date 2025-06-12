@@ -56,7 +56,7 @@ public class PromocionDAO {
                     rs.getInt("idPromocion"),
                     rs.getInt("Cliente_idCliente"),
                     rs.getInt("Producto_idProducto"),
-                    rs.getDouble("Valor/Modificador"), // Asegúrate que el nombre de la columna en la BD sea "Valor"
+                    rs.getDouble("Valor/Modificador"),
                     rs.getDate("Fecha_Inicio").toLocalDate(),
                     rs.getDate("Fecha_Fin").toLocalDate()
             );

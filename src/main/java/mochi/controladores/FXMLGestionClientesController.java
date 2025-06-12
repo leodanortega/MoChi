@@ -74,9 +74,6 @@ public class FXMLGestionClientesController {
     }
 
     private void buscarClientes(String textoBusqueda) {
-        // Busca por nombre o RFC (puedes adaptar el DAO si quieres búsqueda por ambos campos)
-        // Aquí hago búsqueda solo por nombre, pero puedes hacer dos llamadas y combinar resultados si quieres.
-
         List<Cliente> lista = clienteDAO.buscarPorNombre(textoBusqueda);
         ObservableList<Cliente> observableList = FXCollections.observableArrayList(lista);
         tablaClientes.setItems(observableList);

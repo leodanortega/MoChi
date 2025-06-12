@@ -63,7 +63,7 @@ public class FXMLGestionProveedoresController {
     public void regresarVentana(ActionEvent actionEvent) {
         Stage stage = (Stage) tablaProveedores.getScene().getWindow();
         stage.close();
-        // Aquí abres la ventana principal, si la tienes
+
     }
 
     public void agregarProveedor(ActionEvent actionEvent) {
@@ -74,10 +74,10 @@ public class FXMLGestionProveedoresController {
             stage.setTitle("Agregar Proveedor");
             stage.initModality(Modality.APPLICATION_MODAL);
 
-            // No se pasa proveedor para agregar
+
             stage.showAndWait();
 
-            // Refrescar tabla al cerrar ventana
+
             obtenerProovedores();
         } catch (IOException e) {
             e.printStackTrace();

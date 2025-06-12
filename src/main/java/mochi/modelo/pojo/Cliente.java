@@ -81,7 +81,7 @@ public class Cliente {
     
     @Override
 public String toString() {
-    return nombre; // Esto ayuda si no usas StringConverter
+    return nombre;
 }
 
 }

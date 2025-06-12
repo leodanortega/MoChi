@@ -23,7 +23,7 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Nada por hacer aquí por ahora
+
     }
 
     public void setUsuario(Usuario usuario) {
@@ -80,13 +80,6 @@ public class FXMLPrincipalEmpleadoController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
             Parent root = loader.load();
-
-            // Si necesitas pasar el usuario al nuevo controlador:
-            // Object controller = loader.getController();
-            // if (controller instanceof FXMLTablaClientesController) {
-            //     ((FXMLTablaClientesController) controller).setUsuario(usuario);
-            // }
-
             Stage stage = new Stage();
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));

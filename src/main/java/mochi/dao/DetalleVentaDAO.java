@@ -45,7 +45,7 @@ public class DetalleVentaDAO {
 
     } catch (SQLException e) {
         e.printStackTrace();
-        // Aquí puedes hacer manejo adicional si quieres
+
     } finally {
         if (cs != null) {
             try {

@@ -46,7 +46,7 @@ public class PedidoDAO {
                             psEliminarDetalle.executeUpdate();
                         }
 
-                        // Ya no se elimina la compra aunque quede vacía
+
                     }
                 }
             }

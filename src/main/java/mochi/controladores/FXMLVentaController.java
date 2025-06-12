@@ -107,7 +107,7 @@ public class FXMLVentaController {
 
             @Override
             public Cliente fromString(String string) {
-                return null; // No se usa
+                return null;
             }
         });
     }
@@ -261,7 +261,6 @@ public class FXMLVentaController {
         lblTotalVenta.setText(String.format("Total: $%.2f", total));
     }
 
-    // NUEVO método para mostrar alert con promociones del cliente
     private void mostrarPromocionesCliente(Cliente cliente) {
         List<Promocion> promocionesCliente = new ArrayList<>();
         for (Promocion promo : promocionesActivasHoy) {
@@ -271,7 +270,7 @@ public class FXMLVentaController {
         }
 
         if (promocionesCliente.isEmpty()) {
-            return; // No mostrar nada si no tiene promociones
+            return;
         }
 
         StringBuilder mensaje = new StringBuilder();

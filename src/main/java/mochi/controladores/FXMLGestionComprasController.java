@@ -97,18 +97,14 @@ public class FXMLGestionComprasController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLFormularioRegistrarEntradasProducto.fxml"));
             Parent root = loader.load();
-
-            // Pasar el producto seleccionado al controlador del formulario
             mochi.controladores.FXMLFormularioRegistrarEntradasProductoController controller = loader.getController();
             controller.inicializarProducto(productoSeleccionado);
-
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Registrar Entradas de Producto");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
-
-            cargarProductos(); // Recarga la tabla tras registrar entradas
+            cargarProductos();
         } catch (Exception e) {
             e.printStackTrace();
             mostrarAlerta("Error", "No se pudo abrir el formulario de entradas.");

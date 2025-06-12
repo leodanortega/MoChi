@@ -204,8 +204,6 @@ public class ProductoDAO {
                 ps.executeUpdate();
             }
 
-            // Limpia pedidos donde el stock ya superó la cantidad mínima
-            // (se implementa en PedidoDAO, recibe la conexión para usar la misma transacción)
             pedidoDAO.limpiarPedidosConStockSuficiente(producto.getIdProducto(), con);
 
             con.commit();

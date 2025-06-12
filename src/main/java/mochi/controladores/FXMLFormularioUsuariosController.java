@@ -52,9 +52,6 @@ public class FXMLFormularioUsuariosController {
             tfApellidoMaterno.setText(u.getApellidoMaterno());
             tfUsername.setText(u.getUsername());
             pfPassword.setText(u.getPassword());
-
-            // Seleccionar el tipo en el ComboBox según el int tipo
-            // Asumiendo que el índice en tiposUsuarios corresponde a tipo-1
             int tipoIndex = u.getTipo() - 1;
             if (tipoIndex >= 0 && tipoIndex < tiposUsuarios.size()) {
                 cbTipo.getSelectionModel().select(tipoIndex);

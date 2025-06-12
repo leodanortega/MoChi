@@ -64,7 +64,6 @@ public class ProovedorDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Solo cerrar ps y rs, no la conexión
             try {
                 if (rs != null) rs.close();
                 if (ps != null) ps.close();
