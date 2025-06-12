@@ -1,42 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500" prefWidth="644.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLGestionPedidosController">
-   <children>
-   
-       <!-- Título -->
-       <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Productos con stock bajo" />
-   
-       <!-- Campo de búsqueda -->
-       <TextField fx:id="txtBuscar" layoutX="10" layoutY="40" prefWidth="300" promptText="Buscar por nombre..." />
-   
-       <!-- Botón Regresar -->
-       <Button layoutX="567.0" layoutY="13.0" onAction="#regresarVentana" text="Regresar" />
-   
-       <!-- Tabla de Productos -->
-       <TableView fx:id="tablaProductos" layoutX="14.0" layoutY="82.0" prefHeight="350" prefWidth="624.0">
-           <columns>
-               <TableColumn fx:id="colNombre" prefWidth="148.0" text="Nombre" />
-               <TableColumn fx:id="colPresentacion" prefWidth="118.39996337890625" text="Presentación" />
-               <TableColumn fx:id="colCosto" prefWidth="131.2000732421875" text="Cantidad Actual" />
-               <TableColumn fx:id="colCantidadActual" prefWidth="121.0" text="Cantidad Mínima" />
-               <TableColumn fx:id="colCantidadMinima" prefWidth="105.0" text="Diferencia" />
-           </columns>
-       </TableView>
-   
-       <!-- Botón Realizar Pedido -->
-       <HBox layoutX="517.0" layoutY="440" prefHeight="40" prefWidth="163.0" style="-fx-padding: 5;">
-      <children>
-              <Button onAction="#realizarPedido" prefHeight="25.0" prefWidth="119.0" text="Realizar Pedido" />
-      </children>
-       </HBox>
-   </children>
+<AnchorPane prefHeight="500" prefWidth="644" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLGestionPedidosController">
+
+    <!-- Título -->
+    <Label layoutX="20" layoutY="15" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="⚠ Productos con stock bajo" />
+
+    <!-- Campo de búsqueda -->
+    <TextField fx:id="txtBuscar" layoutX="20" layoutY="55" prefWidth="300" promptText="Buscar por nombre..." style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
+
+    <!-- Botón Regresar -->
+    <Button layoutX="524" layoutY="15" onAction="#regresarVentana" prefHeight="35" prefWidth="100" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔙 Regresar" />
+
+    <!-- Tabla de Productos -->
+    <TableView fx:id="tablaProductos" layoutX="20" layoutY="95" prefHeight="330" prefWidth="604" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">
+        <columns>
+            <TableColumn fx:id="colNombre" prefWidth="148" text="Nombre" />
+            <TableColumn fx:id="colPresentacion" prefWidth="118" text="Presentación" />
+            <TableColumn fx:id="colCosto" prefWidth="131" text="Cantidad Actual" />
+            <TableColumn fx:id="colCantidadActual" prefWidth="121" text="Cantidad Mínima" />
+            <TableColumn fx:id="colCantidadMinima" prefWidth="105" text="Diferencia" />
+        </columns>
+    </TableView>
+
+    <!-- Botón Realizar Pedido -->
+    <HBox layoutX="490" layoutY="440" prefHeight="45" prefWidth="163" spacing="10" style="-fx-padding: 5;">
+        <children>
+            <Button onAction="#realizarPedido" prefHeight="35" prefWidth="140" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🛒 Realizar Pedido" />
+        </children>
+    </HBox>
 
 </AnchorPane>

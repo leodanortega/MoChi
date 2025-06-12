@@ -3,21 +3,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/17.0.12"
+<AnchorPane prefHeight="500" prefWidth="700"
+            xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLGestionComprasController">
+            fx:controller="mochi.controladores.FXMLGestionComprasController"
+            style="-fx-background-color: #f4f4f4;">
 
     <!-- Título -->
-    <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Gestión de Compras" />
+    <Label layoutX="20" layoutY="15"
+           text="📦 Gestión de Compras"
+           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" />
 
     <!-- Campo de búsqueda -->
-    <TextField fx:id="txtBuscar" layoutX="10" layoutY="40" prefWidth="300" promptText="Buscar por nombre..." />
+    <TextField fx:id="txtBuscar"
+               layoutX="20" layoutY="55" prefWidth="300"
+               promptText="Buscar por nombre..."
+               style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
 
     <!-- Botón Regresar -->
-    <Button layoutX="600" layoutY="10" onAction="#regresarVentana" text="Regresar" />
+    <Button layoutX="580" layoutY="15" prefWidth="100" prefHeight="35"
+            text="🔙 Regresar"
+            onAction="#regresarVentana"
+            style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" />
 
     <!-- Tabla de Productos -->
-    <TableView fx:id="tablaProductos" layoutX="10" layoutY="80" prefHeight="350" prefWidth="680">
+    <TableView fx:id="tablaProductos"
+               layoutX="20" layoutY="95" prefHeight="330" prefWidth="660"
+               style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">
         <columns>
             <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
             <TableColumn fx:id="colPresentacion" prefWidth="120" text="Presentación" />
@@ -28,8 +40,9 @@
     </TableView>
 
     <!-- Botón para registrar entradas -->
-    <Button layoutX="400" layoutY="440" prefWidth="200"
+    <Button layoutX="390" layoutY="440" prefWidth="200" prefHeight="35"
+            text="➕ Registrar Entradas"
             onAction="#registrarEntradas"
-            text="Registrar Entradas de Productos" />
+            style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" />
 
 </AnchorPane>

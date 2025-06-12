@@ -3,32 +3,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mochi.controladores.FXMLGestionProveedoresController"
-            prefWidth="700" prefHeight="500">
+<AnchorPane prefHeight="500" prefWidth="700" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLGestionProveedoresController">
 
     <!-- Título -->
-    <Label text="Lista de Proveedores" style="-fx-font-size: 20px;" layoutX="10" layoutY="10" />
+    <Label layoutX="20" layoutY="15" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="🏢 Lista de Proveedores" />
 
     <!-- Botón Regresar -->
-    <Button text="Regresar" layoutX="600" layoutY="10" onAction="#regresarVentana" />
+    <Button layoutX="580" layoutY="15" onAction="#regresarVentana" prefHeight="35" prefWidth="100" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔙 Regresar" />
 
     <!-- Tabla de Proveedores -->
-    <TableView fx:id="tablaProveedores" layoutX="10" layoutY="50" prefWidth="680" prefHeight="380">
+    <TableView fx:id="tablaProveedores" layoutX="20" layoutY="55" prefHeight="380" prefWidth="660" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">
         <columns>
-            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="140" />
-            <TableColumn fx:id="colRfc" text="RFC" prefWidth="120"/>
-            <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="160" />
-            <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="120" />
-            <TableColumn fx:id="colEmail" text="Email" prefWidth="140" />
+            <TableColumn fx:id="colNombre" prefWidth="140" text="Nombre" />
+            <TableColumn fx:id="colRfc" prefWidth="120" text="RFC" />
+            <TableColumn fx:id="colDireccion" prefWidth="160" text="Dirección" />
+            <TableColumn fx:id="colTelefono" prefWidth="120" text="Teléfono" />
+            <TableColumn fx:id="colEmail" prefWidth="120" text="Email" />
         </columns>
     </TableView>
 
     <!-- Botones de Acción -->
-    <HBox spacing="10" layoutX="400" layoutY="440" prefWidth="290" prefHeight="40" style="-fx-padding: 5;">
-        <Button text="Agregar" onAction="#agregarProveedor" prefWidth="80"/>
-        <Button text="Modificar" onAction="#modificarProveedor" prefWidth="80"/>
-        <Button text="Eliminar" onAction="#eliminarProveedor" prefWidth="80"/>
+    <HBox layoutX="336.0" layoutY="440.0" prefHeight="46.0" prefWidth="345.0" spacing="15" style="-fx-padding: 5;">
+        <Button onAction="#agregarProveedor" prefHeight="35" prefWidth="110" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="➕ Agregar" />
+        <Button onAction="#modificarProveedor" prefHeight="35" prefWidth="110" style="-fx-background-color: #f0ad4e; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="✏ Modificar" />
+        <Button onAction="#eliminarProveedor" prefHeight="35" prefWidth="110" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🗑 Eliminar" />
     </HBox>
-
 </AnchorPane>
