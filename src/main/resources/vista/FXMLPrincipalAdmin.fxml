@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLPrincipalAdminController">
@@ -41,10 +42,11 @@
             </children>
         </VBox>
     </left>
-
-    <!-- Centro vacío o mensaje inicial -->
-    <center>
-        <Label style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;" text="Seleccione una opción del menú para comenzar" BorderPane.alignment="CENTER" />
-    </center>
+   <center>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../Monas%20Chinas/Cheers.jpg" />
+         </image></ImageView>
+   </center>
 
 </BorderPane>

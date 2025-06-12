@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="mochi.controladores.FXMLFormularioRegistrarEntradasProductoController"
-      spacing="25" alignment="TOP_CENTER"
-      style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
+<VBox alignment="TOP_CENTER" spacing="25" style="-fx-background-color: #ecf0f1; -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLFormularioRegistrarEntradasProductoController">
 
     <children>
-        <Label text="📦 Registrar Entrada de Producto"
-               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" />
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="📦 Registrar Entrada de Producto" />
 
         <GridPane hgap="15" vgap="15">
             <columnConstraints>
@@ -20,23 +15,25 @@
             </columnConstraints>
 
             <children>
-                <Label text="Nombre del producto:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label fx:id="lblNombreProducto" text="-" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Nombre del producto:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="lblNombreProducto" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                <Label text="Presentación:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label fx:id="lblPresentacionProducto" text="-" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Presentación:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="lblPresentacionProducto" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Label text="Cantidad recibida:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField fx:id="tfCantidadRecibida" promptText="Ej. 20" prefWidth="180" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Cantidad recibida:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="tfCantidadRecibida" prefWidth="180" promptText="Ej. 20" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
 
-        <HBox spacing="30" alignment="CENTER">
-            <Button fx:id="btnGuardar" text="💾 Guardar" onAction="#guardarEntrada"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" />
-            <Button fx:id="btnCancelar" text="✖ Cancelar" onAction="#cancelar"
-                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" />
+        <HBox alignment="CENTER" spacing="30">
+            <Button fx:id="btnGuardar" onAction="#guardarEntrada" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" text="💾 Guardar" />
+            <Button fx:id="btnCancelar" onAction="#cancelar" style="-fx-background-color: #e74c3c; -fx-background-color: purple; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 25; -fx-background-radius: 8;" text="✖ Cancelar" />
         </HBox>
     </children>
 </VBox>
-

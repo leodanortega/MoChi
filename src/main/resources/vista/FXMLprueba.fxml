@@ -1,57 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLpruebaController">
-   <children>
-      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="361.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Productos Vendidos">
-               <content>
-                  <TableView fx:id="tvProductosVenta" prefHeight="322.0" prefWidth="707.0">
-                    <columns>
-                      <TableColumn fx:id="productoNombre" prefWidth="272.0" text="Producto" />
-                      <TableColumn fx:id="cantidadVendida" prefWidth="297.0" text="Cantidad" />
-                    </columns>
-                  </TableView>
-               </content>
-            </Tab>
-          <Tab text="Clientes con Productos">
-               <content>
-                  <TableView fx:id="tvClienteProducto" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="colNombreCliente" prefWidth="280.0" text="Cliente" />
-                      <TableColumn fx:id="colNombreProducto" prefWidth="280.0" text="Producto" />
-                    </columns>
-                  </TableView>
-               </content>
-          </Tab>
-          <Tab text="Bebida Más Comprada">
-               <content>
-                  <TableView fx:id="tvBebidaMasComprada" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="colClienteBebida" prefWidth="180.0" text="Cliente" />
-                      <TableColumn fx:id="colProductoBebida" prefWidth="180.0" text="Producto" />
-                      <TableColumn fx:id="colTotalComprado" prefWidth="180.0" text="Total Comprado" />
-                    </columns>
-                  </TableView>
-               </content>
-          </Tab>
-          <Tab text="Bebida Menos Comprada">
-               <content>
-                  <TableView fx:id="tvBebidaMenosComprada" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="colClienteBebidaMenos" prefWidth="180.0" text="Cliente" />
-                      <TableColumn fx:id="colProductoBebidaMenos" prefWidth="180.0" text="Producto" />
-                      <TableColumn fx:id="colTotalCompradoMenos" prefWidth="180.0" text="Total Comprado" />
-                    </columns>
-                  </TableView>
-               </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-      <Button layoutX="451.0" layoutY="455.0" mnemonicParsing="false" onAction="#btnRegresar" prefHeight="42.0" prefWidth="102.0" text="Regresar" />
-   </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLpruebaController">
+   <center>
+      <AnchorPane id="AnchorPane" prefHeight="454.0" prefWidth="760.0">
+         <children>
+            <TabPane layoutX="14.0" layoutY="14.0" prefHeight="361.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Productos Vendidos">
+                     <content>
+                        <TableView fx:id="tvProductosVenta" prefHeight="369.0" prefWidth="720.0">
+                          <columns>
+                            <TableColumn fx:id="productoNombre" prefWidth="272.0" text="Producto" />
+                            <TableColumn fx:id="cantidadVendida" prefWidth="297.0" text="Cantidad" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+                <Tab text="Clientes con Productos">
+                     <content>
+                        <TableView fx:id="tvClienteProducto" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colNombreCliente" prefWidth="280.0" text="Cliente" />
+                            <TableColumn fx:id="colNombreProducto" prefWidth="280.0" text="Producto" />
+                          </columns>
+                        </TableView>
+                     </content>
+                </Tab>
+                <Tab text="Bebida Más Comprada">
+                     <content>
+                        <TableView fx:id="tvBebidaMasComprada" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colClienteBebida" prefWidth="180.0" text="Cliente" />
+                            <TableColumn fx:id="colProductoBebida" prefWidth="180.0" text="Producto" />
+                            <TableColumn fx:id="colTotalComprado" prefWidth="180.0" text="Total Comprado" />
+                          </columns>
+                        </TableView>
+                     </content>
+                </Tab>
+                <Tab text="Bebida Menos Comprada">
+                     <content>
+                        <TableView fx:id="tvBebidaMenosComprada" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colClienteBebidaMenos" prefWidth="180.0" text="Cliente" />
+                            <TableColumn fx:id="colProductoBebidaMenos" prefWidth="180.0" text="Producto" />
+                            <TableColumn fx:id="colTotalCompradoMenos" prefWidth="180.0" text="Total Comprado" />
+                          </columns>
+                        </TableView>
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Button layoutX="644.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnRegresar" prefHeight="34.0" prefWidth="89.0" style="-fx-background-color: blue;" text="🔙 Regresar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label text="Reportes" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+   </top>
+</BorderPane>

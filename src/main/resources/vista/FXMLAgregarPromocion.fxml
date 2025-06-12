@@ -45,7 +45,7 @@
             <children>
                 <Button onAction="#btnGuardar" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;                                -fx-font-size: 14px; -fx-padding: 8 16; -fx-background-radius: 8;" text="💾 Guardar" />
 
-                <Button onAction="#btnCancelar" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;                                -fx-font-size: 14px; -fx-padding: 8 16; -fx-background-radius: 8;" text="❌ Cancelar" />
+                <Button onAction="#btnCancelar" style="-fx-text-fill: white; -fx-background-color: purple; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16; -fx-background-radius: 8;" text="❌ Cancelar" />
             </children>
         </HBox>
 

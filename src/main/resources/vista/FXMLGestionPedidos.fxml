@@ -12,7 +12,7 @@
     <TextField fx:id="txtBuscar" layoutX="20" layoutY="55" prefWidth="300" promptText="Buscar por nombre..." style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-border-radius: 5;" />
 
     <!-- Botón Regresar -->
-    <Button layoutX="524" layoutY="15" onAction="#regresarVentana" prefHeight="35" prefWidth="100" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔙 Regresar" />
+    <Button layoutX="524" layoutY="15" onAction="#regresarVentana" prefHeight="35" prefWidth="100" style="-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔙 Regresar" />
 
     <!-- Tabla de Productos -->
     <TableView fx:id="tablaProductos" layoutX="20" layoutY="95" prefHeight="330" prefWidth="604" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 5;">

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mochi.controladores.FXMLPrincipalEmpleadoController">
@@ -24,7 +25,7 @@
         <VBox alignment="TOP_LEFT" spacing="15" style="-fx-background-color: #ecf0f1; -fx-padding: 25 25 25 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.2, 1, 1);">
             <children>
                 <Label style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Opciones del sistema" />
-                <Label fx:id="lblNombreUsuario" layoutX="20.0" layoutY="20.0" text="Usuario: " style="-fx-font-size: 14px;" />
+                <Label fx:id="lblNombreUsuario" layoutX="20.0" layoutY="20.0" style="-fx-font-size: 14px;" text="Usuario: " />
                 <Button fx:id="btnGestionClientes" onAction="#btnGestionClientes" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="👥 Gestión de Clientes" />
 
                 <Button fx:id="btnRealizarVentas" onAction="#btnRealizarVentas" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8;                                -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 16;" text="💰 Realizar Ventas" />
@@ -35,10 +36,11 @@
             </children>
         </VBox>
     </left>
-
-    <!-- Centro con mensaje inicial -->
-    <center>
-        <Label style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;" text="Seleccione una opción del menú para comenzar" BorderPane.alignment="CENTER" />
-    </center>
+   <center>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../Monas%20Chinas/Cheers.png" />
+         </image></ImageView>
+   </center>
 
 </BorderPane>
